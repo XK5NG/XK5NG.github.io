@@ -1,7 +1,7 @@
-_={
+SAYGEX = {
 388602723, --remzt
 47919K43919, --balboa7601
-3949060827, --hii1933_
+3949060827, --hii1933
 4265860024, --azxen
 1213114335, --jacki black ok noob
 452642708, --abdierbrorenmin
@@ -181,4 +181,4 @@ _={
 3482579389,
 3482772195,
 4624493186,
-}return _
+}return SAYGEX
