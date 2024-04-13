@@ -1,4 +1,5 @@
 SAYGEX = {
+2744310615, --ct1777
 5166042448, --sam
 1722704918, --henpullsyouclose
 3871137632, --Smokey bombaclat real_v3xyt
