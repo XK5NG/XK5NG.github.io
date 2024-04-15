@@ -1,4 +1,5 @@
 SAYGEX = {
+349784664, --gguizin
 1870428975, --baller0306
 3505236099, --yesbestie
 2916236766, --nogabarana
