@@ -1,4 +1,6 @@
 SAYGEX = {
+2355298331, --.5o1o
+224423982, --xcec
 5013691421, --hinolv2
 471808228, --neckslasha
 349784664, --gguizin
@@ -163,7 +165,7 @@ SAYGEX = {
 2799758131, --kyosuscammas
 527432270, --itsrustty
 2917062, --im_only_seen_once
-4334463058, --im_only_seen_once alt
+5746814991, --im_only_seen_once alt
 4635597292, -- yes eat it
 4283206375, --yes
 4214491665, --fr
