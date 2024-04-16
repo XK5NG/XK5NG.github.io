@@ -64,7 +64,6 @@ SAYGEX = {
 3561673730, --lukaz5647
 3816578, -- owenn
 2338005034, --samojoke_lol
-4185976212, -- MO
 2640764623, --luasave
 4950178374, --xezc
 1491127695, --lynnxontop.
