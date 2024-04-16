@@ -1,4 +1,5 @@
 SAYGEX = {
+2407052904, --z.nuno
 1656877733, --4_v12
 4987251932, --urahara_yoruichi
 99614826, --beijing6994
