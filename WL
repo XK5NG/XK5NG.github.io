@@ -71,7 +71,7 @@ SAYGEX = {
 1311922449, --pro.e.
 3930958583, --sunrakuuu
 2840954407, --zay
-3561673730, --lukaz5647
+1281603400, --luka8563pro
 3816578, -- owenn
 2338005034, --samojoke_lol
 2640764623, --luasave
