@@ -79,7 +79,7 @@ SAYGEX = {
 2840954407, --zay
 1281603400, --luka8563pro
 3816578, -- owenn
-2338005034, --samojoke_lol
+4344941868, --samojoke_lol
 2640764623, --luasave
 4950178374, --xezc
 1491127695, --lynnxontop.
