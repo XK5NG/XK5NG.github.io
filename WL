@@ -1,5 +1,5 @@
 SAYGEX = {
-1875795698, --hazeszy
+3977570527, --hazeszy
 3813587634, --ryuugetsuyatensio
 5630307235, --Null
 1857282113, --rin_ln
