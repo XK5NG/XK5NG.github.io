@@ -140,9 +140,7 @@ SAYGEX = {
 685247809, --Old prem um0675
 152413311, --awaitingdeathh
 5032144339, --RAZER
-3412102970, --skizz alt (giveaway)
 174038071, --sgio.
-2006917160, --skizz
 5336301241, --robloxnewss
 738265866, --brexxyrh
 1132420998, --zynko
