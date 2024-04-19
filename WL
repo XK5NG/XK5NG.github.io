@@ -1,4 +1,5 @@
 SAYGEX = {
+2798264801, --curatoria
 3418958733, --bxnsnx
 1288256567, --pqnd4.
 162164266, --southsidegetta
