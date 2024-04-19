@@ -66,7 +66,7 @@ SAYGEX = {
 73744032, --.herbeloved
 2542002075, --skstevenup
 3931675537, --zaidw
-1881362741, --maria5868
+3269753251, --maria5868
 1940115056, --rizzler
 10811347, --balboa
 388602723, --remzt
@@ -87,7 +87,7 @@ SAYGEX = {
 3341347778, --dexdhc3
 1458304415, --Markuz_x
 737006064, --fum_bo
-5505724982, --leak_44
+5111309841, --leak_44
 5010380950, --carvemysin
 1311922449, --pro.e.
 3930958583, --sunrakuuu
@@ -185,7 +185,7 @@ SAYGEX = {
 4440293232, --notasexywoman
 4835798747, --dreww
 69452159, --Owen
-4222613935, --getmodulebase
+5718931417, --getmodulebase
 2913463075, --jakefrrr
 1125284413, --kobesbeenhim
 3091023538, --furryboy
