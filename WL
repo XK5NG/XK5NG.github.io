@@ -1,4 +1,5 @@
 SAYGEX = {
+28303301, --.e_1.8.
 3977570527, --hazeszy
 3813587634, --ryuugetsuyatensio
 5630307235, --Null
