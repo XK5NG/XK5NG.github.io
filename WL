@@ -1,4 +1,5 @@
 SAYGEX = {
+120516858, --Swagicals
 4852788609, --Mason09071234567890 aka furryna
 3164018929, --LoardaSploitss
 1663840770, --trqumatised
