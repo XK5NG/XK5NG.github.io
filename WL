@@ -1,4 +1,5 @@
 SAYGEX = {
+696207132, --rakietuni._
 1665712425, --doppyess
 2757656487, --amer
 3593345730, --x1jxy
