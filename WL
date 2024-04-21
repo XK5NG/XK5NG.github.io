@@ -229,8 +229,6 @@ SAYGEX = {
 
 --// !Ticxyy's Friends UwU ! \\--
 2476532246, --obesekid
-1379871815, --Jepe
-5011443723, --jepjep
 4558921621, --deer
 5343933558, --Bubblegum899l
 4758490406, --seth
