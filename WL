@@ -1,4 +1,5 @@
 SAYGEX = {
+3395576040, --yujilastaltaccound
 942849115, --pickleboy1
 792909820, --1zes
 3587829678, --itzyourboyjay
