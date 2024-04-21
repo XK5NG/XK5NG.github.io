@@ -17,7 +17,6 @@ SAYGEX = {
 2644291939, --realdextersmells
 2411740501, --R1P_B0NES
 416901039, --vermiphobe
-868392580, --fosterTHEplayer32
 803624739, --habibbattii
 3954632983, --rzzzuuoo
 2433783608, --F0rkanGonnaDieSoon
