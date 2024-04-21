@@ -1,4 +1,5 @@
 SAYGEX = {
+3841223018, --toji_fushiguro011.
 2811758362, --reallol
 3299254615, --watermoter
 137915276, --alectronecs
