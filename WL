@@ -1,4 +1,6 @@
 SAYGEX = {
+825416463, --FoundWar
+4346754001, --yosh
 4213587928, --febasz
 3841223018, --toji_fushiguro011.
 2811758362, --reallol
