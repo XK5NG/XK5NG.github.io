@@ -1,4 +1,7 @@
 SAYGEX = {
+1036711608, --gingerbeefwhale
+1455260160, --justgoose
+760897332, --eclipse
 2045754552, --dequeljo
 3920785655, --liquatiethehonored
 3652529524, --jayku.08
