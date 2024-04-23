@@ -1,4 +1,5 @@
 SAYGEX = {
+86587122, --lofyuseri
 1612554459, --bigmac17298
 2669175834, --chuueaeainekmgojokhaicchairthakm
 2841539238, --12s3s
