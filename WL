@@ -1,4 +1,6 @@
 SAYGEX = {
+1612554459, --bigmac17298
+2669175834, --chuueaeainekmgojokhaicchairthakm
 2841539238, --12s3s
 829197046, --winte3_r
 2575527203, --jussxten
@@ -52,7 +54,7 @@ SAYGEX = {
 2456729357, --ga1axy_02
 28303301, --.e_1.8.
 3977570527, --hazeszy
-3813587634, --ryuugetsuyatensio
+2439184185, --ryuugetsuyatensio
 5630307235, --Null
 1431797314, --rin_ln
 2740353687, --RaunaksCrime
