@@ -11,7 +11,19 @@ form.addEventListener('submit', (event) => {
   const description = descriptionInput.value.trim();
   const imageUrl = imageUrlInput.value.trim();
 
-  const timestamp = new Date().toISOString();
+  // Get current date and time
+  const currentDate = new Date();
+
+  // Format the date and time
+  const formattedDate = currentDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+  const formattedTime = currentDate.toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
   let webhookCode = `
 <title>${title}</title>
@@ -31,7 +43,7 @@ form.addEventListener('submit', (event) => {
   webhookCode += `
 <meta name="twitter:card" content="summary_large_image" />
 <meta content="#6600ff" data-react-helmet="true" name="theme-color" />
-<meta name="pubdate" content="${timestamp}">
+<meta name="pubdate" content="${formattedDate} ${formattedTime}">
 `;
 
   webhookCodeOutput.textContent = webhookCode;
