@@ -1,38 +1,52 @@
-const form = document.getElementById('webhook-form');
-const descriptionInput = document.getElementById('description');
-const imageUrlInput = document.getElementById('image-url');
-const webhookCodeOutput = document.getElementById('webhook-code');
+body {
+  background-color: black;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
+.container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 5px;
+  text-align: center;
+}
 
-  const description = descriptionInput.value.trim();
-  const imageUrl = imageUrlInput.value.trim();
+h2 {
+  margin-bottom: 20px;
+}
 
-  let webhookCode = `
-<title>XK5NG</title>
-<meta content="${description}" property="og:description" />
-<meta content="XK5NG" property="og:title" />
-<meta content="https://xk5ng.github.io/embeds" property="og:url" />`;
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-  if (imageUrl) {
-    if (isValidUrl(imageUrl)) {
-      webhookCode += `
-<meta content="${imageUrl}" property="og:image" />`;
-    } else {
-      alert('Please enter a valid image URL.');
-    }
-  }
+.textbox-container {
+  margin-bottom: 15px;
+}
 
-  webhookCode += `
-<meta name="twitter:card" content="summary_large_image" />
-<meta content="#6600ff" data-react-helmet="true" name="theme-color" />
-`;
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
 
-  webhookCodeOutput.textContent = webhookCode;
-});
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 15px;
+}
 
-function isValidUrl(url) {
-  const urlPattern = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+(:\d+)?)(\/?|\/\w+\.)*\.\w{2,}(\/\w+)*\/?/gi;
-  return urlPattern.test(url);
+button:hover {
+  background-color: #3e8e41;
 }
