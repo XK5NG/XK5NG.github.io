@@ -24,6 +24,7 @@ form.addEventListener('submit', (event) => {
   }
 
   webhookCode += `
+<meta content="XK5NG" property="og:title" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta content="#6600ff" data-react-helmet="true" name="theme-color" />
 `;
