@@ -11,8 +11,7 @@ form.addEventListener('submit', (event) => {
   const description = descriptionInput.value.trim();
   const imageUrl = imageUrlInput.value.trim();
 
-  const currentDate = new Date();
-  const formattedTimestamp = currentDate.toISOString();
+  const timestamp = new Date().toISOString();
 
   let webhookCode = `
 <title>${title}</title>
@@ -32,7 +31,7 @@ form.addEventListener('submit', (event) => {
   webhookCode += `
 <meta name="twitter:card" content="summary_large_image" />
 <meta content="#6600ff" data-react-helmet="true" name="theme-color" />
-<meta name="pubdate" content="${formattedTimestamp}">
+<meta name="pubdate" content="${timestamp}">
 `;
 
   webhookCodeOutput.textContent = webhookCode;
