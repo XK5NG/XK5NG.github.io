@@ -171,7 +171,7 @@ SAYGEX = {
 2840954407, --zay
 1281603400, --luka8563pro
 3816578, -- owenn
-1436031582, --samojoke_lol
+dl_qi, --transfer by samo
 2640764623, --luasave
 5505713639, --xezc
 4217553944, --lynnxontop.
