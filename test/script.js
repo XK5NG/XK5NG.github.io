@@ -12,6 +12,7 @@ form.addEventListener('submit', (event) => {
   let webhookCode = `
 <title>XK5NG</title>
 <meta content="${description}" property="og:description" />
+<meta content="XK5NG" property="og:title" />
 <meta content="https://xk5ng.github.io/embeds" property="og:url" />`;
 
   if (imageUrl) {
@@ -24,7 +25,6 @@ form.addEventListener('submit', (event) => {
   }
 
   webhookCode += `
-<meta content="XK5NG" property="og:title" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta content="#6600ff" data-react-helmet="true" name="theme-color" />
 `;
