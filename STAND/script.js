@@ -12,7 +12,10 @@ generateButton.addEventListener('click', () => {
   const ownerUsername = ownerUsernameInput.value;
   const standUsername = standUsernameInput.value;
 
-  const generatedCode = `getgenv().Accounts = {OWNER = '${ownerUsername}', STAND = '${standUsername}'}
+  const generatedCode = `getgenv()._=
+"This script made by xk5ng | 808188341547565097 | If you pay for this script you get scammed LMAO | This script is completely free ok | Please kill yourself if you sell this script | On god skibidi rizzler meow gyat ohio sigma | https://discord.gg/msgabv2t9Q | https://discord.gg/stando"
+
+getgenv().Accounts = {OWNER = '${ownerUsername}', STAND = '${standUsername}'}
 
   --\\-- Stand-Configuration --//--
 
