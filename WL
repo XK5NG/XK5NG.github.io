@@ -247,7 +247,7 @@ SAYGEX = {
 1132420998, --zynko
 959167997, --tacticalanil
 357092486, --mxz7x UwU
-4649040508, --1onlyren
+1374453251, --1onlyren
 2442101941, --kyosuscammas
 2999730520, --xendia
 394311382, --primns
