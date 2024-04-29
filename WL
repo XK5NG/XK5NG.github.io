@@ -19,7 +19,7 @@ SAYGEX = {
 2332914480, --firmdn
 521852323, --belgeli
 2410716685, --ghouxl
-4155897894, --luxus_q
+1376998674, --luxus_q
 2837743969, --realfiesta
 3383436121, --xi6tw
 12785461, --rooqzor
