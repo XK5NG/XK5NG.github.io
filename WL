@@ -1,4 +1,6 @@
 SAYGEX = {
+2599738905, --hrhridhfhf
+4243874312, --silenthillsman
 102471670, --kunozu
 421213800, --deadbythelake
 1048785493, --rinnykkk
