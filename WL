@@ -238,7 +238,6 @@ SAYGEX = {
 3192452740, --abuzingthezazaxx
 3629574272, --fa_floppa_plays
 2744790876, --theonewhojokes
-1393099499, --gay dxn
 685247809, --Old prem um0675
 152413311, --awaitingdeathh
 5032144339, --RAZER
