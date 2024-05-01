@@ -1,4 +1,5 @@
 SAYGEX = {
+1153677871, --samojokefriend
 2656448291, --.teshika
 419971914, --underrated.jens
 3331655256, --Wzoo
