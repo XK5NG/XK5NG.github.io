@@ -1,4 +1,5 @@
 SAYGEX = {
+2833848044, --xentyya
 3982980659, --sooki2134
 2521492527, --validkk
 3544118056, --Leanxder
