@@ -75,7 +75,7 @@ SAYGEX = {
 2558495819, --kircey
 5558435167, --genrann5430
 5108583212, --rvhoi
-5775180296, --antonyfrl
+5852886672, --antonyfrl
 2238626793, --pancadao__
 1747526490, --shawnboi
 3439507334, --rowzq1ny
