@@ -1,4 +1,5 @@
 SAYGEX = {
+230014712, --Nonsizm
 5579475507, --Getyourprize550
 4917402403, --3gcse
 180312077, --xwv
