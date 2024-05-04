@@ -1,4 +1,5 @@
 SAYGEX = {
+5034265536, --chokingherout
 3507968498, --.goodbruh
 4928411250, --reddragoncircle
 4413806650, --xffe
