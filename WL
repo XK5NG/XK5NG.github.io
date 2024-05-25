@@ -4,7 +4,7 @@ I={
 348505931, --oppotism
 136516815, --camboss1
 2979910389, --kapa_ro
-1719543708, --kunozo
+1719543708, --kunozu
 313560, --Jubbs451
 2755871035, --dwdawdfAEFAWEf
 517063559, --AronasBago
