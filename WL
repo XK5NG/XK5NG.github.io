@@ -1,4 +1,5 @@
 I={
+137047, --Leilanime1
 4617196308, --ConstopYT
 3385162522, --Lewiosun
 1440689233, --IBetxv
@@ -155,7 +156,6 @@ I={
 348505931, --oppotism
 2979910389, --kapa_ro
 1719543708, --kunozu
-313560, --Jubbs451
 2755871035, --dwdawdfAEFAWEf
 517063559, --AronasBago
 2591236643, --EtO_xn
