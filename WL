@@ -1,4 +1,5 @@
 I={
+5278817991, --cristos771
 1307652661, --(@saidadamPRO)
 3209468745, --kkinglol
 2540700100, --therocks6812
@@ -19,7 +20,6 @@ I={
 419088443, --thenorthpolice
 4364655638, --Pet_new1213
 514363450, --LoyaltyXIntegrity
-3632172409, --boyah992
 5867632528, --DH_Comp
 363242344, --lironalr123
 3717669599, --DEVIL_LIVBNL
