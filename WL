@@ -177,7 +177,6 @@ I={
 463546858, --zoulvent
 6019370279, --AnxietyMaker1
 4911028203, --BilalAcc_No83
-5392345872, --OodDExUIk
 203004768, --lovecooln
 5867425570, --TooViIe
 3018046725, --IM0RTALaakash
