@@ -1,4 +1,5 @@
 I={
+1146445155, --999XxOOFERxX999
 3742394112, --Mepzuu_altfake
 3735443711, --Potfarmgem76
 1497559557, --thekingmegak1
@@ -38,7 +39,6 @@ I={
 1782109437, --.nyamnyam
 1685335943, --ker
 1089868555, --theimperialmossi
-4957563067, --L3KKX
 4350448620, --lmau444
 2434224304, --robolocyloc
 5278817991, --cristos771
