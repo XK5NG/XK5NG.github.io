@@ -1,4 +1,5 @@
 I={
+9801583, --trq
 1992843105, --f8xg
 5815631931, --(@Ther3al_T)
 4415770791, --alaa43267
@@ -52,7 +53,6 @@ I={
 1385224133, --meraxious
 159395060, --lucvrd
 2456729357, --Ga1axy_02
-419088443, --thenorthpolice
 4364655638, --Pet_new1213
 514363450, --LoyaltyXIntegrity
 5867632528, --DH_Comp
