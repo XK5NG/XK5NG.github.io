@@ -310,7 +310,6 @@ mewing = {
 5783714185, --Xeptic
 3664827076, --pancake
 4000616286, --KAPA_RO
-3741761673, --aaaaaa
 4938813381, --Kojii_zen
 2437508805, --zhyoinrp
 1810776284, --ProBisionTtv
