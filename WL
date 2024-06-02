@@ -436,7 +436,6 @@ mewing = {
 3138619573, --cocaineseller
 805416473, --maxis2good.
 876596840, --determinedmelle
-2375065861, --lukass0071
 1470177616, --ikeoo_
 2947371227, --0k1w
 1857872343, --1777o
