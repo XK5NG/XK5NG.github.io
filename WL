@@ -614,7 +614,6 @@ mewing = {
 5392334436, --zURzmnlYuIN
 2878578063, --3BAIDF
 1625644575, --.mohs
-3277576261, --zempack4509
 3783292680, --prevaill.
 145733980, --nico10438
 4724485548, --hallowcatxd
