@@ -417,7 +417,6 @@ mewing = {
 684302335, --chase.1009alt
 3339914949, --h3notm3
 1224043493, --hamsta
-1669330496, --arcaens
 2332914480, --firmdn
 521852323, --belgeli
 2410716685, --ghouxl
