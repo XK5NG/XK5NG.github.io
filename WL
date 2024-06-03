@@ -96,7 +96,6 @@ mewing = {
 1967211966, --sigmaaaa1
 57326324, --(@JWTW)
 1358668303, --zentwilight
-4481348205, --chrism3675
 3261018279, --luvkaibee
 5078146101, --Senkets96
 386588256, --gusyevaa
