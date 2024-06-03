@@ -1,6 +1,6 @@
 --\\ this is so ohio ok //
 mewing = {
--- // !Panda Alt ! \\
+--// !Panda Alt ! \\
 1288256567, --mePqnda
 3505170388, --RazorXGamingChair
 3508162119, --RazorXGamingChair1
@@ -18,7 +18,7 @@ mewing = {
 5286417701,-- dahoodstandowner
 1234639193, --Sigma
 
--- // !FurryBoy Alt ! \\
+--// !FurryBoy Alt ! \\
 3091023538,
 5212080729,
 2707380590,
