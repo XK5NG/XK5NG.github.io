@@ -231,7 +231,6 @@ mewing = {
 210540704, --KungfuPandiSenpai
 2009134037, --nqiexd
 3605151966, --214sb
-5250719478, --Caticornuni_wolfle
 1162070812, --tortoiselover67
 12405271, --8ontbryuef6m4cyz7iml
 3143163312, --gjeoyeggyu
