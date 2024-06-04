@@ -1,5 +1,5 @@
 --\\ this is so ohio ok //
-mewing = {
+_ = {
 --// !Panda Alt ! \\
 1288256567, --mePqnda
 3505170388, --RazorXGamingChair
@@ -727,5 +727,4 @@ mewing = {
 4154796643, --None
 1445678500, --1230364542580822016
 3833717208, --1080240806704722041
-}
-return mewing
+} return _
