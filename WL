@@ -65,7 +65,7 @@ return {
 1773098986, --me1al0ne
 2645004303, --frijas_0931
 3409683107, --ZG_deck
-3680407388, --jassim
+3644435950, --jassim
 2864557969, --lucslindo
 691773137, --user177272327
 3773526285, --iloveroghoul136
