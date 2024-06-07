@@ -137,7 +137,7 @@ return {
 1089868555, --theimperialmossi
 4350448620, --lmau444
 2434224304, --robolocyloc
-5278817991, --cristos771
+4160741987, --cristos771
 1307652661, --(@saidadamPRO)
 3209468745, --kkinglol
 1006824025, --ai._.ai._.
