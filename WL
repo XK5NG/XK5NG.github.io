@@ -49,6 +49,7 @@ return {
 3482772195,
 4624493186,
 
+825069798, --MonkeyPlays17 (@BIGBIRD1729)
 1235984596, --redOctober (@kevinr708)
 3447543312, --desshmund
 241219989, --timesboy
@@ -470,7 +471,6 @@ return {
 3284233133, --Thresalk
 1695820816, --ruisvv
 86587122, --lofyuseri
-825069798, --bigmac17298
 2669175834, --chuueaeainekmgojokhaicchairthakm
 2841539238, --12s3s
 829197046, --winte3_r
