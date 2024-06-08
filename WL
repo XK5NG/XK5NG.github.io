@@ -388,7 +388,6 @@ return {
 421213800, --deadbythelake
 1048785493, --rinnykkk
 3301177335, --namroblox
-2486919904, -- deer noobkzys
 5125595309, --poketurtletv7045
 2740451560, --chills07_
 369869811, --cz_d
