@@ -303,7 +303,6 @@ return {
 4822961319, --"and make my own role where is say spongebob rich"
 603702239, --batriley2011
 5717294295, --goatofanonyme
-3560190230, --Asumazc
 81237155, --burymeinrickk
 5842459666, --Arscenide
 4412054325, --defnotyshaae
