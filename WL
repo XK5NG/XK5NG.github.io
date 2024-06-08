@@ -307,7 +307,6 @@ return {
 4412054325, --defnotyshaae
 2630327191, --dtbtrayyy
 1425919046, --a777eeyd
-5213994044, --Ghoster17167
 5373771517, --xyuz
 2328107813, --Akusa
 5468703661, --pitbala0
