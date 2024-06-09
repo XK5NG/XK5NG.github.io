@@ -674,13 +674,6 @@ return {
 1009157218, --trainer18
 525736265, --.ayoo
 
---// ! Panda Alt ! \\
-1288256567, --mePqnda
-3505170388, --RazorXGamingChair
-3508162119, --RazorXGamingChair1
-3508163313, --RazorXGamingChair2
-
---// ! Ticxyy's Friends UwU ! \\--
 2476532246, --obesekid
 4558921621, --deer
 5343933558, --Bubblegum899l
@@ -692,12 +685,18 @@ return {
 5286417701,-- dahoodstandowner
 1234639193, --Sigma
 
---// ! Furry alt ! \\
+--// Panda Alt \\
+1288256567, --mePqnda
+3505170388, --RazorXGamingChair
+3508162119, --RazorXGamingChair1
+3508163313, --RazorXGamingChair2
+
+--// Furry alt \\
 3091023538,
 5212080729,
 2707380590,
 
---// !Ticxyy alt ! \\--
+--// Ticxyy alt \\--
 3298703830,
 3025609982,
 2935218778,
@@ -723,7 +722,7 @@ return {
 3482772195,
 4624493186,
 
---// ! People who get whitelisted using bot ! \\--
+--// People who get whitelisted using bot \\--
 3836280, --773530559203901450
 2318012047, --920900168038121553
 2884298865, --None
