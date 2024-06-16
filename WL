@@ -103,7 +103,6 @@ return{
 200862759, --Lvvrsz
 2383260370, --W25ST
 137047, --Leilanime1
-5523061323, --ConstopYT
 3385162522, --Lewiosun
 1440689233, --IBetxv
 3861934646, --daniel
