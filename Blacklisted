@@ -2,6 +2,7 @@
 --Put 2 "" and , like "", after that put the hwid from logs. example: "933183a1-afd3-4cbd-a3df-5f797b3f3aeb",
 --say gex
 return {
+"c10d069b933da250",
 "5F792626-9973-4DA6-9217-9DBC42EB0942",
 "534bc64effdc3dec",
 "ba1fa31d33d679a6",
