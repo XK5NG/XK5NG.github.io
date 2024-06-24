@@ -273,7 +273,6 @@ return{
 294045627, --Sayonara
 5283533887, --linplsv51
 3421192600, --lazy
-6024459945, --qixvie.exe
 2807354040, --mad_bacon
 2316626377, --soul
 3450909716, --cuh
