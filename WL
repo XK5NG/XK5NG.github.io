@@ -177,7 +177,7 @@ return{
 361568733, --qquinwzx
 1921560887, --Lukskag
 578800540, --frwte
-5836170572, --Greenwizardmeth
+1806549026, --1168086480493756464
 5857909312, --EaRunsYou
 3794009764, --Luffyfrutilla
 3563166575, --SpongeBobsilent
