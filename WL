@@ -144,7 +144,6 @@ return{
 3836564685, --wojtekalt0
 188767898, --sykkiue
 630126182, --ShesThinkingAboutMe
-1315778589, --Zaki232010
 3933231085, --LonRill
 1650552692, --MINITHEMINXISCOOL
 1616943220, --xs_plvs
