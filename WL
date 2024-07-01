@@ -641,7 +641,6 @@ return{
 1830842006, --iam.atomixl4835
 130512401, --onvxr
 833986805, --YaoziLb
-5699733511, --Cyrus
 98266393, --stabbings
 4137836956, --stfxeletic
 113545907, --jprox6
