@@ -1,10 +1,10 @@
 return {
-    318,--StopSign
+    328,--StopSign
     137,--Knife
     66,--Other mask
     27,--Surgeon mask
-    339,--Pitchfork
-    265,--Whip
+    350,--Pitchfork
+    273,--Whip
     2,--Taco
     273,--Heavyweight
     133,--Jail key
