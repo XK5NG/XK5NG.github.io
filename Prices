@@ -1,0 +1,16 @@
+return {
+    318,--StopSign
+    137,--Knife
+    66,--Other mask
+    27,--Surgeon mask
+    339,--Pitchfork
+    265,--Whip
+    2,--Taco
+    273,--Heavyweight
+    133,--Jail key
+    27,--BrownBag
+    9835,--flame thrower
+    1093,--flame ammo
+    4098, --LMG 
+    328,--LMG ammo
+}
