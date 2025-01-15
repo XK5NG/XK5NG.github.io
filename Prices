@@ -13,4 +13,8 @@ return {
     1093,--flame ammo
     4098, --LMG 
     328,--LMG ammo
+    1694, --Rifle 
+    273,--Rifle ammo
+    2131, --Aug 
+    87,--Aug ammo
 }
