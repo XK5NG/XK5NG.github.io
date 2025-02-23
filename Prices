@@ -1,20 +1,22 @@
 return {
-    328,--StopSign
-    137,--Knife
-    66,--Other mask
-    27,--Surgeon mask
-    350,--Pitchfork
-    273,--Whip
-    2,--Taco
-    273,--Heavyweight
-    133,--Jail key
-    27,--BrownBag
-    9835,--flame thrower
-    1093,--flame ammo
-    4098, --LMG 
-    328,--LMG ammo
-    1694, --Rifle 
-    273,--Rifle ammo
-    2131, --Aug 
-    87,--Aug ammo
+    328,--StopSign 1
+    137,--Knife 2
+    66,--Other mask 3
+    27,--Surgeon mask 4
+    350,--Pitchfork 5
+    273,--Whip 6
+    2,--Taco 7
+    273,--Heavyweight 8
+    133,--Jail key 9
+    27,--BrownBag 10
+    9835,--flame thrower 11
+    1093,--flame ammo 12
+    4098, --LMG 13
+    328,--LMG ammo 14
+    1694, --Rifle 15
+    273,--Rifle ammo 16
+    2131, --Aug 17
+    87,--Aug ammo 18
+    2513,--High medium armor 19
+    765,--Grenade price 20
 }
