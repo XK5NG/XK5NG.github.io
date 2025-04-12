@@ -19,9 +19,7 @@ return {
 87,--Aug ammo 18
 2513,--High medium armor 19
 765,--Grenade 20
-328,--StopSign 21
-350,--Pitchfork 22
-300,--Bat 23
-350,--Shovel 24
-382,--SledgeHammer 25
+300,--Bat 21
+350,--Shovel 22
+382,--SledgeHammer 23
 }
