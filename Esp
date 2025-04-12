@@ -523,7 +523,7 @@ function InstanceObject:Render()
 end
 
 -- interface
-getgenv().EspInterface = {
+local EspInterface = {
 	_hasLoaded = false,
 	_objectCache = {},
 	whitelist = {},
@@ -631,8 +631,8 @@ getgenv().EspInterface = {
 	}
 };
 
-function getgenv().EspInterface.AddInstance(instance, options)
-	local cache = getgenv().EspInterface._objectCache;
+function EspInterface.AddInstance(instance, options)
+	local cache = EspInterface._objectCache;
 	if cache[instance] then
 		warn("Instance handler already exists.");
 	else
@@ -641,24 +641,24 @@ function getgenv().EspInterface.AddInstance(instance, options)
 	return cache[instance][1];
 end
 
-function getgenv().EspInterface.Load()
-	assert(not getgenv().EspInterface._hasLoaded, "Esp has already been loaded.");
+function EspInterface.Load()
+	assert(not EspInterface._hasLoaded, "Esp has already been loaded.");
 
 	local function createObject(player)
-		getgenv().EspInterface._objectCache[player] = {
+		EspInterface._objectCache[player] = {
 			EspObject.new(player, EspInterface),
 			ChamObject.new(player, EspInterface)
 		};
 	end
 
 	local function removeObject(player)
-		local object = getgenv().EspInterface._objectCache[player];
+		local object = EspInterface._objectCache[player];
 		if object then
 			for i = 1, #object do
 				object[i]:Destruct();
 			end
 
-			getgenv().EspInterface._objectCache[player] = nil;
+			EspInterface._objectCache[player] = nil;
 		end
 	end
 
@@ -668,42 +668,44 @@ function getgenv().EspInterface.Load()
 		end
 	end
 
-	getgenv().EspInterface.playerAdded = players.PlayerAdded:Connect(createObject);
-	getgenv().EspInterface.playerRemoving = players.PlayerRemoving:Connect(removeObject);
-	getgenv().EspInterface._hasLoaded = true;
+	EspInterface.playerAdded = players.PlayerAdded:Connect(createObject);
+	EspInterface.playerRemoving = players.PlayerRemoving:Connect(removeObject);
+	EspInterface._hasLoaded = true;
 end
 
-function getgenv().EspInterface.Unload()
-	assert(getgenv().EspInterface._hasLoaded, "Esp has not been loaded yet.");
+function EspInterface.Unload()
+	assert(EspInterface._hasLoaded, "Esp has not been loaded yet.");
 
-	for _, object in next, getgenv().EspInterface._objectCache do
+	for _, object in next, EspInterface._objectCache do
 		for i = 1, #object do
 			object[i]:Destruct();
 		end
 	end
 
-	getgenv().EspInterface.playerAdded:Disconnect();
-	getgenv().EspInterface.playerRemoving:Disconnect();
-	getgenv().EspInterface._hasLoaded = false;
+	EspInterface.playerAdded:Disconnect();
+	EspInterface.playerRemoving:Disconnect();
+	EspInterface._hasLoaded = false;
 end
 
 -- game specific functions
-function getgenv().EspInterface.getWeapon(player)
+function EspInterface.getWeapon(player)
     return player.Character and player.Character:FindFirstChildWhichIsA("Tool") and player.Character:FindFirstChildWhichIsA("Tool").Name or "nan"
 end
 
-function getgenv().EspInterface.isFriendly(player)
+function EspInterface.isFriendly(player)
 	return player.Team and player.Team == localPlayer.Team;
 end
 
-function getgenv().EspInterface.getCharacter(player)
+function EspInterface.getCharacter(player)
 	return player.Character;
 end
 
-function getgenv().EspInterface.getHealth(character)
+function EspInterface.getHealth(character)
 	local humanoid = character and findFirstChildOfClass(character, "Humanoid");
 	if humanoid then
 		return humanoid.Health, humanoid.MaxHealth;
 	end
 	return 100, 100;
 end
+
+return EspInterface;
