@@ -5,7 +5,7 @@ local workspace = game:GetService("Workspace");
 
 -- variables
 local localPlayer = players.LocalPlayer;
-local camera = workspace.CurrentCamera;
+camera = workspace.CurrentCamera
 local viewportSize = camera.ViewportSize;
 local container = Instance.new("Folder",
 	gethui and gethui() or game:GetService("CoreGui"));
@@ -707,5 +707,15 @@ function EspInterface.getHealth(character)
 	end
 	return 100, 100;
 end
+
+task.spawn(function()
+	while true do
+		local current = workspace.CurrentCamera
+		if current ~= camera then
+			camera = current
+		end
+		task.wait()
+	end
+end)
 
 return EspInterface;
