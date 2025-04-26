@@ -22,4 +22,6 @@ return {
 300,--Bat 21
 350,--Shovel 22
 382,--SledgeHammer 23
+601,--Flashbang 24
+5464,--TeaR GAS 25 [expensive af]
 }
