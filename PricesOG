@@ -1,0 +1,27 @@
+return {
+300,--StopSign 1
+150,--Knife 2
+60,--Other mask 3
+25,--Surgeon mask 4
+320,--Pitchfork 5
+273,--Whip 6
+2,--Taco 7
+250,--Heavyweight 8
+125,--Jail key 9
+25,--BrownBag 10
+25000,--flame thrower 11
+1550,--flame ammo 12
+3750, --LMG 13
+300,--LMG ammo 14
+0, --Rifle 15
+0,--Rifle ammo 16
+1950, --Aug 17
+80,--Aug ammo 18
+2300,--High medium armor 19
+700,--Grenade 20
+250,--Bat 21
+320,--Shovel 22
+350,--SledgeHammer 23
+550,--Flashbang 24
+0,--TeaR GAS 25
+}
