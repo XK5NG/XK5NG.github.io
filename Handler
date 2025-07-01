@@ -240,8 +240,6 @@ function Handler:HttpGet(url: string | {string}): any
 
 	if success and typeof(result) == "function" then
 		return result()
-    else
-        warn("HttpGet failed:", result)
 	end
 
 	return nil
