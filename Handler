@@ -126,8 +126,8 @@ function Handler:Pairs(Table: { [any]: any }, Callback: (any) -> ())
 end
 
 function Handler:Create(Type: string, Properties: { [string]: any }): Instance
-    if Properties.Name then 
-        (Properties.Parent or workspace):FindFirstChild(Properties.Name) and (Properties.Parent or workspace):FindFirstChild(Properties.Name):Destroy() 
+    if Properties.Name and (Properties.Parent or workspace):FindFirstChild(Properties.Name) then
+    	(Properties.Parent or workspace):FindFirstChild(Properties.Name):Destroy()
     end
 
     local NewInstance = Instance.new(Type)
