@@ -88,7 +88,7 @@ function Handler:Get_Mouse_Player(): Player?
 			players[index].Character:FindFirstChild("Humanoid") and 
 			players[index].Character.Humanoid.Health > 0 
         ) then
-			local screenPos, onScreen = workspace.CurrentCamera:WorldToViewportPoint(players[index].Character.Head.Position)
+			local screenPos, onScreen = Workspace.CurrentCamera:WorldToViewportPoint(players[index].Character.Head.Position)
 			if onScreen then
 				local distance = (Vector2.new(screenPos.X, screenPos.Y) - Vector2.new(OWNER:GetMouse().X, OWNER:GetMouse().Y)).Magnitude
 				if distance < shortest then
@@ -143,8 +143,8 @@ function Handler:Pairs(Table: { [any]: any }, Callback: (any) -> ())
 end
 
 function Handler:Create(Type: string, Properties: { [string]: any }): Instance
-    if Properties.Name and (Properties.Parent or workspace):FindFirstChild(Properties.Name) then
-    	(Properties.Parent or workspace):FindFirstChild(Properties.Name):Destroy()
+    if Properties.Name and (Properties.Parent or Workspace):FindFirstChild(Properties.Name) then
+    	(Properties.Parent or Workspace):FindFirstChild(Properties.Name):Destroy()
     end
 
     local NewInstance = Instance.new(Type)
@@ -156,12 +156,10 @@ function Handler:Create(Type: string, Properties: { [string]: any }): Instance
     return NewInstance
 end
 
-function Handler:Find_Item(Name: string, Type: boolean)
-	for i, v in pairs(Workspace.Ignored.Shop:GetChildren()) do
-		if Type and string.find(tostring(v):lower(),"ammo") and string.find(tostring(v):lower(),Name:lower()) and v:FindFirstChild("Head") then
-			return v
-		elseif not Type and not string.find(tostring(v):lower(),"ammo") and string.find(tostring(v):lower(),Name:lower()) and v:FindFirstChild("Head") then
-			return v
+function Handler:Find_Item(name: string, isAmmo: boolean)
+	for index, item in pairs(Workspace.Ignored.Shop:GetChildren()) do
+		if item:FindFirstChild("Head") and ((isAmmo and item.Name:lower():find("ammo") and item.Name:lower():find(name:lower())) or (not isAmmo and not item.Name:lower():find("ammo") and item.Name:lower():find(name:lower()))) then
+			return item
 		end
 	end
 end
