@@ -51,7 +51,7 @@ function Handler:UpperTorso(v: Model)
     end
 end
 
-function Handler:GetHumanoidRoot(v: Model)
+function Handler:HumanoidRootPart(v: Model)
     if not v.Character:FindFirstChild(v.Name) then
         if v.Character:FindFirstChild('HumanoidRootPart') then
             return v.Character.HumanoidRootPart
