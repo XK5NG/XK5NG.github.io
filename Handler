@@ -156,10 +156,23 @@ function Handler:Create(Type: string, Properties: { [string]: any }): Instance
     return NewInstance
 end
 
-function Handler:Find_Item(name: string, isAmmo: boolean)
-	for index, item in pairs(Workspace.Ignored.Shop:GetChildren()) do
-		if item:FindFirstChild("Head") and ((isAmmo and item.Name:lower():find("ammo") and item.Name:lower():find(name:lower())) or (not isAmmo and not item.Name:lower():find("ammo") and item.Name:lower():find(name:lower()))) then
-			return item
+function Handler:Find_Item(name: string | {string}, isAmmo: boolean): Instance | {Instance}?
+	if typeof(name) == "table" then
+		return (function(): {Instance}
+			local r = {}
+			for i = 1, #name do
+				table.insert(r, Handler:Find_Item(name[i], isAmmo))
+			end
+			return r
+		end)()
+	end
+
+	for i = 1, #Workspace.Ignored.Shop:GetChildren() do
+		if Workspace.Ignored.Shop:GetChildren()[i]:FindFirstChild("Head") then
+			if (isAmmo and Workspace.Ignored.Shop:GetChildren()[i].Name:lower():find("ammo") and Workspace.Ignored.Shop:GetChildren()[i].Name:lower():find(name:lower()))
+			or (not isAmmo and not Workspace.Ignored.Shop:GetChildren()[i].Name:lower():find("ammo") and Workspace.Ignored.Shop:GetChildren()[i].Name:lower():find(name:lower())) then
+				return Workspace.Ignored.Shop:GetChildren()[i]
+			end
 		end
 	end
 end
