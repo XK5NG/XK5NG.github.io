@@ -188,9 +188,9 @@ end
 
 function Handler:CanCollide(Character: Model, Value: boolean)
     Handler:Pairs(Character:GetDescendants(), function(v)
-        if v:IsA("Part") or v:IsA("BasePart") then 
-            v.CanCollide = Value 
-        end 
+        if (v:IsA("Part") or v:IsA("BasePart") or v:IsA("MeshPart")) and v.CanCollide == true then
+            v.CanCollide = Value
+        end
     end)
 end
 
@@ -240,9 +240,10 @@ function Handler:HttpGet(url: string | {string}): any
 
 	if success and typeof(result) == "function" then
 		return result()
+    else
+        warn("HttpGet failed:", result)
 	end
 
-	warn("HttpGet failed:", result)
 	return nil
 end
 
