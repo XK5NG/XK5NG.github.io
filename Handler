@@ -2,17 +2,14 @@ function service(service: string)
 	return cloneref(game:GetService(service))
 end
 
-local Player = service("Players")
-local OWNER = Player.LocalPlayer
+local OWNER = service("Players").LocalPlayer
 
 local Workspace = service("Workspace")
 local ReplicatedStorage = service("ReplicatedStorage")
 local TweenService = service("TweenService")
-local Debris = service("Debris")
 local MainEvent = ReplicatedStorage:WaitForChild("MainEvent")
 
-local Handler = {}
-local Connections = {}
+local Handler, Connections = {}, {}
 
 function Handler:GetChar(v: Model)
     return OWNER.Character:FindFirstChild(v.Name)
