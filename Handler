@@ -67,20 +67,37 @@ function Handler:HumanoidRootPart(v: Model)
     end
 end
 
-function Handler:Get_Ping()
-    return math.floor(tonumber(game:GetService("Stats").Network.ServerStatsItem:WaitForChild("Data Ping"):GetValueString():split(" ")[1])) .. " ms"
+function Handler:Get_Player(query: string): Player?
+	for index, player in pairs(game.Players:GetPlayers()) do
+		if player ~= OWNER and (
+			player.Name:lower():sub(1, #query) == query:lower() or
+			player.DisplayName:lower():sub(1, #query) == query:lower()
+		) then
+			return player
+		end
+	end
+	return nil
 end
 
-function Handler:Reload_Gun()
-    if OWNER.Character:FindFirstChildWhichIsA("Tool") then
-        return MainEvent:FireServer("Reload", OWNER.Character:FindFirstChildWhichIsA("Tool"))
-    end
-end
-
-function Handler:Is_Reloading()
-    local reload = OWNER.Character:FindFirstChild("BodyEffects")
-        and OWNER.Character.BodyEffects:FindFirstChild("Reload")
-    return reload and reload.Value or false
+function Handler:Get_Mouse_Player(): Player?
+	local player, shortest = nil, math.huge
+	local players = game.Players:GetPlayers()
+	for index = 1, #players do
+		if players[index] ~= OWNER and (
+			players[index].Character and
+			players[index].Character:FindFirstChild("Humanoid") and 
+			players[index].Character.Humanoid.Health > 0 
+        ) then
+			local screenPos, onScreen = workspace.CurrentCamera:WorldToViewportPoint(players[index].Character.Head.Position)
+			if onScreen then
+				local distance = (Vector2.new(screenPos.X, screenPos.Y) - Vector2.new(OWNER:GetMouse().X, OWNER:GetMouse().Y)).Magnitude
+				if distance < shortest then
+					player, shortest = players[index], distance
+				end
+			end
+		end
+	end
+	return player
 end
 
 function Handler:Disconnect(Name: string, ToNil: boolean)
@@ -137,6 +154,16 @@ function Handler:Create(Type: string, Properties: { [string]: any }): Instance
     end
 
     return NewInstance
+end
+
+function Handler:Find_Item(Name: string, Type: boolean)
+	for i, v in pairs(Workspace.Ignored.Shop:GetChildren()) do
+		if Type and string.find(tostring(v):lower(),"ammo") and string.find(tostring(v):lower(),Name:lower()) and v:FindFirstChild("Head") then
+			return v
+		elseif not Type and not string.find(tostring(v):lower(),"ammo") and string.find(tostring(v):lower(),Name:lower()) and v:FindFirstChild("Head") then
+			return v
+		end
+	end
 end
 
 function Handler:Destroy(Name: Instance)
@@ -254,6 +281,22 @@ function Handler:SendWebhook(url: string, data: table)
 			Body = game:GetService("HttpService"):JSONEncode(data),
 		})
 	end)
+end
+
+function Handler:Get_Ping()
+    return math.floor(tonumber(game:GetService("Stats").Network.ServerStatsItem:WaitForChild("Data Ping"):GetValueString():split(" ")[1])) .. " ms"
+end
+
+function Handler:Reload_Gun()
+    if OWNER.Character:FindFirstChildWhichIsA("Tool") then
+        return MainEvent:FireServer("Reload", OWNER.Character:FindFirstChildWhichIsA("Tool"))
+    end
+end
+
+function Handler:Is_Reloading()
+    local reload = OWNER.Character:FindFirstChild("BodyEffects")
+        and OWNER.Character.BodyEffects:FindFirstChild("Reload")
+    return reload and reload.Value or false
 end
 
 return Handler
