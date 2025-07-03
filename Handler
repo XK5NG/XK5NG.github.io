@@ -115,20 +115,27 @@ function Handler:IsConnected(Name: string)
 	return nil
 end
 
-function Handler:Disconnect(Name: string, ToNil: boolean)
-    if typeof(Connections[Name]) == "RBXScriptConnection" then
-        Connections[Name]:Disconnect()
-    elseif typeof(Connections[Name]) == "table" then
-        for index, conn in ipairs(Connections[Name]) do
-            if typeof(conn) == "RBXScriptConnection" then
-                conn:Disconnect()
-            end
-        end
-    end
-    
-    if ToNil then
-        Connections[Name] = nil
-    end
+function Handler:Disconnect(Name: string | {string}, ToNil: boolean)
+	if typeof(Name) == "table" then
+		for i = 1, #Name do
+			self:Disconnect(Name[i], ToNil)
+		end
+		return
+	end
+
+	if typeof(Connections[Name]) == "RBXScriptConnection" then
+		Connections[Name]:Disconnect()
+	elseif typeof(Connections[Name]) == "table" then
+		for i = 1, #Connections[Name] do
+			if typeof(Connections[Name][i]) == "RBXScriptConnection" then
+				Connections[Name][i]:Disconnect()
+			end
+		end
+	end
+
+	if ToNil then
+		Connections[Name] = nil
+	end
 end
 
 function Handler:AddConnection(Name: string | table, Connection: RBXScriptConnection?)
