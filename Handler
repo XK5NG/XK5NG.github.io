@@ -100,6 +100,21 @@ function Handler:Get_Mouse_Player(): Player?
 	return player
 end
 
+function Handler:IsConnected(Name: string)
+	local conn = Connections[Name]
+	if typeof(conn) == "RBXScriptConnection" then
+		return conn.Connected
+	elseif typeof(conn) == "table" then
+		for i = 1, #conn do
+			if typeof(conn[i]) == "RBXScriptConnection" and conn[i].Connected then
+				return true
+			end
+		end
+		return false
+	end
+	return nil
+end
+
 function Handler:Disconnect(Name: string, ToNil: boolean)
     if typeof(Connections[Name]) == "RBXScriptConnection" then
         Connections[Name]:Disconnect()
@@ -110,6 +125,7 @@ function Handler:Disconnect(Name: string, ToNil: boolean)
             end
         end
     end
+    
     if ToNil then
         Connections[Name] = nil
     end
@@ -156,23 +172,15 @@ function Handler:Create(Type: string, Properties: { [string]: any }): Instance
     return NewInstance
 end
 
-function Handler:Find_Item(names: {string}, isAmmo: boolean): {Instance}
-	local items = {}
-	for i = 1, #names do
-		for j = 1, #workspace.Ignored.Shop:GetChildren() do
-			local shopItem = workspace.Ignored.Shop:GetChildren()[j]
-			if shopItem:FindFirstChild("Head") then
-				local nameLower = names[i]:lower()
-				local itemName = shopItem.Name:lower()
-				if isAmmo and itemName:find("ammo") and itemName:find(nameLower) then
-					table.insert(items, shopItem)
-				elseif not isAmmo and not itemName:find("ammo") and itemName:find(nameLower) then
-					table.insert(items, shopItem)
-				end
-			end
+function Handler:Find_Item(Name: string, Type: boolean)
+	for i, v in pairs(Workspace.Ignored.Shop:GetChildren()) do
+		local n = v.Name:lower()
+		if Type and n:find("ammo") and n:find(Name:lower()) and v:FindFirstChild("Head") then
+			return v
+		elseif not Type and not n:find("ammo") and n:find(Name:lower()) and v:FindFirstChild("Head") then
+			return v
 		end
 	end
-	return items
 end
 
 function Handler:Destroy(Name: Instance)
