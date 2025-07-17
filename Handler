@@ -67,6 +67,57 @@ function Handler:HumanoidRootPart(v: Model)
     end
 end
 
+function Handler:GetAsset(Result: {[string]: string}): {[string]: Instance}
+    local results, preloadList = {}, {}
+
+    for name, key in pairs(Result) do
+        local asset = game:GetObjects("rbxassetid://" .. key)[1]
+        results[name] = asset:Clone()
+
+        table.insert(preloadList, asset)
+
+        for index, object in pairs(asset:GetDescendants()) do
+            table.insert(preloadList, object)
+        end
+
+        asset.Parent = nil
+		asset:PivotTo(CFrame.new(1e6, 1e6, 1e6))
+		asset.Parent = workspace
+		game:GetService("RunService").RenderStepped:Wait()
+		asset.Parent = nil
+    end
+
+    game:GetService("ContentProvider"):PreloadAsync(preloadList)
+
+    return results
+end
+
+function Handler:Get_Asset_By_Folder(Folder: Folder, Result: {[string]: string})
+    local results, preloadList = {}, {}
+
+    for name, key in pairs(Result) do
+        local asset = game:GetObjects(getcustomasset(Folder, Result))[1]
+        local gsub = key:match("^(.-)%.rbxm$"):gsub(" ", "_")
+        results[gsub] = asset:Clone()
+
+        table.insert(preloadList, asset)
+
+        for index, object in pairs(asset:GetDescendants()) do
+            table.insert(preloadListm object)
+        end
+
+        asset.Parent = nil
+		asset:PivotTo(CFrame.new(1e6, 1e6, 1e6))
+		asset.Parent = workspace
+		game:GetService("RunService").RenderStepped:Wait()
+		asset.Parent = nil
+    end
+
+    game:GetService("ContentProvider"):PreloadAsync(preloadList)
+
+    return results
+end
+
 function Handler:Get_Player(query: string): Player?
 	for index, player in pairs(game.Players:GetPlayers()) do
 		if player ~= OWNER and (
@@ -100,21 +151,6 @@ function Handler:Get_Mouse_Player(): Player?
 	return player
 end
 
-function Handler:IsConnected(Name: string)
-	local conn = Connections[Name]
-	if typeof(conn) == "RBXScriptConnection" then
-		return conn.Connected
-	elseif typeof(conn) == "table" then
-		for i = 1, #conn do
-			if typeof(conn[i]) == "RBXScriptConnection" and conn[i].Connected then
-				return true
-			end
-		end
-		return false
-	end
-	return nil
-end
-
 function Handler:Disconnect(Name: string | {string}, ToNil: boolean)
 	if typeof(Name) == "table" then
 		for i = 1, #Name do
@@ -137,6 +173,7 @@ function Handler:Disconnect(Name: string | {string}, ToNil: boolean)
 		Connections[Name] = nil
 	end
 end
+
 
 function Handler:AddConnection(Name: string | table, Connection: RBXScriptConnection?)
     if typeof(Connection) ~= "RBXScriptConnection" then 
