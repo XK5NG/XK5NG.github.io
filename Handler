@@ -92,29 +92,39 @@ function Handler:GetAsset(Result: {[string]: string}): {[string]: Instance}
     return results
 end
 
-function Handler:Get_Asset_By_Folder(Folder: Folder, Result: {[string]: string})
+function Handler:Get_Asset_By_Folder(Folder: string, Result: {[string]: string})
     local results, preloadList = {}, {}
 
     for name, key in pairs(Result) do
-        local asset = game:GetObjects(getcustomasset(Folder, Result))[1]
-        local gsub = key:match("^(.-)%.rbxm$"):gsub(" ", "_")
-        results[gsub] = asset:Clone()
+        local asset = game:GetObjects(getcustomasset(Folder .. "/" .. key))[1]
+        local id = key:match("^(.-)%.rbxm$"):gsub(" ", "_")
+        results[id] = asset:Clone()
 
         table.insert(preloadList, asset)
 
-        for index, object in pairs(asset:GetDescendants()) do
-            table.insert(preloadListm object)
+        for self, object in pairs(asset:GetDescendants()) do
+            if object:IsA("ParticleEmitter") or
+               object:IsA("Trail") or
+               object:IsA("Beam") or
+               object:IsA("Fire") or
+               object:IsA("Smoke") or
+               object:IsA("Sparkles") or
+               object:IsA("PointLight") or
+               object:IsA("SurfaceLight") or
+               object:IsA("SpotLight") then
+                object.Enabled = true
+            end
+            table.insert(preloadList, object)
         end
 
         asset.Parent = nil
-		asset:PivotTo(CFrame.new(1e6, 1e6, 1e6))
-		asset.Parent = workspace
-		game:GetService("RunService").RenderStepped:Wait()
-		asset.Parent = nil
+        asset:PivotTo(CFrame.new(1e6, 1e6, 1e6))
+        asset.Parent = workspace
+        game:GetService("RunService").RenderStepped:Wait()
+        asset.Parent = nil
     end
 
     game:GetService("ContentProvider"):PreloadAsync(preloadList)
-
     return results
 end
 
