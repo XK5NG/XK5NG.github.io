@@ -161,6 +161,19 @@ function Handler:Get_Mouse_Player(): Player?
 	return player
 end
 
+function Handler:Connected(Name: string)
+	if typeof(Connections[Name]) == "RBXScriptConnection" then
+		return Connections[Name].Connected
+	elseif typeof(Connections[Name]) == "table" then
+		for i = 1, #Connections[Name] do
+			if typeof(Connections[Name][i]) == "RBXScriptConnection" and Connections[Name][i].Connected then
+				return true
+			end
+		end
+		return false
+	end
+end
+
 function Handler:Disconnect(Name: string | {string}, ToNil: boolean)
 	if typeof(Name) == "table" then
 		for i = 1, #Name do
