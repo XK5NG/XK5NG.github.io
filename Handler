@@ -71,6 +71,12 @@ function Handler:HumanoidRootPart(v: Model)
     end
 end
 
+function Handler:ChangeState(Number: number)
+    pcall(function()
+        Handler:Humanoid(OWNER):ChangeState(Number)
+    end)
+end
+
 function Handler:GetAsset(Result: {[string]: string}): {[string]: Instance}
     local results, preloadList = {}, {}
 
