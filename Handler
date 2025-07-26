@@ -325,7 +325,7 @@ function Handler:CanCollide(Character: Model, Value: boolean)
 end
 
 function Handler:ZeroVelocity(Character: Model)
-	Handler:Pairs(Character:GetDescendants(), function(Index, Part)
+	Handler:Pairs(Character:GetDescendants(), function(Part)
 		if Part:IsA("BasePart") or Part:IsA("MeshPart") or Part:IsA("Part") then
 			if Part.Velocity ~= Vector3.zero or Part.AssemblyLinearVelocity ~= Vector3.zero or Part.AssemblyAngularVelocity ~= Vector3.zero then
 				Part.Velocity = Vector3.zero
