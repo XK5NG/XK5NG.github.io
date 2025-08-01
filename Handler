@@ -7,9 +7,12 @@ local OWNER = service("Players").LocalPlayer
 local Workspace = service("Workspace")
 local ReplicatedStorage = service("ReplicatedStorage")
 local TweenService = service("TweenService")
+local TextChatService = service("TextChatService")
 local MainEvent = ReplicatedStorage:WaitForChild("MainEvent")
 
 local Handler, Connections = {}, {}
+
+local Playing = nil
 
 function Handler:CloneRef(service: string): Instance
     return cloneref(game:GetService(service))
@@ -265,7 +268,7 @@ function Handler:Destroy(Name: Instance)
 	end
 end
 
-function Handler:RemoveAcessory(Character: Model, Accessory: Accessory)
+function Handler:RemoveAccessory(Character: Model, Accessory: Accessory)
     for name, item in pairs(Character:GetChildren()) do
         if item:IsA(Accessory) then
             item:Destroy()
@@ -342,12 +345,45 @@ function Handler:Stop(Character: Model)
     end)
 end
 
+function Handler:AnimPlay(ID: string, SPEED: number?, Time: number?, Smoothing: number?)
+	Handler:Stop(OWNER)
+    
+	for Index, Tracks in pairs(Handler:Humanoid(OWNER):GetPlayingAnimationTracks()) do
+		if Tracks.Animation.AnimationId:match("rbxassetid://" .. ID) then
+			Tracks:Stop()
+		end
+	end
+
+	local Animation = Instance.new("Animation", workspace)
+	Animation.AnimationId = "rbxassetid://" .. ID
+	Playing = Handler:Humanoid(OWNER):LoadAnimation(Animation)
+	Playing.Priority = Enum.AnimationPriority.Action4
+
+	if tonumber(Smoothing) then
+		Playing:Play(Smoothing)
+	else
+		Playing:Play()
+	end
+	
+	if tonumber(SPEED) then
+		Playing:AdjustSpeed(SPEED)
+	else
+		Playing:AdjustSpeed(1)
+	end
+
+	if tonumber(Time) then
+		Playing.TimePosition = Time
+	end
+
+	Animation:Destroy()
+end
+
 function Handler:Tween(Part: Instance, Duration: number, Properties: { [string]: any }): void
-    TweenServicCreate(Part, TweenInfo.new(Duration), Properties):Play()
+    TweenService:Create(Part, TweenInfo.new(Duration), Properties):Play()
 end
 
 function Handler:Chat(Message: any)
-    game:GetService:e("TextChatService").TextChannels.RBXGeneral:SendAsync(Message)
+    TextChatService.TextChannels.RBXGeneral:SendAsync(Message)
 end
 
 function Handler:HttpGet(url: string | {string}): any
