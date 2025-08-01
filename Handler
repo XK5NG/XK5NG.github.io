@@ -56,18 +56,8 @@ function Handler:UpperTorso(v: Model)
 end
 
 function Handler:HumanoidRootPart(v: Model)
-    if not v.Character:FindFirstChild(v.Name) then
-        if v.Character:FindFirstChild('HumanoidRootPart') then
-            return v.Character.HumanoidRootPart
-        else
-            return v.Character.UpperTorso
-        end
-    else
-        if not v.Character:FindFirstChild('HumanoidRootPart') then
-            return v.Character:FindFirstChild(v.Name).HumanoidRootPart
-        else
-            return v.Character.HumanoidRootPart
-        end
+    if v.Character:FindFirstChild("HumanoidRootPart") then
+       return v.Character.HumanoidRootPart
     end
 end
 
@@ -285,7 +275,9 @@ end
 
 function Handler:Equip(Name: string)
     if not OWNER.Character:FindFirstChild(Name) then
-        OWNER.Backpack:FindFirstChild(Name).Parent = OWNER.Character
+        if OWNER.Backpack:FindFirstChild(Name) then
+            OWNER.Backpack:FindFirstChild(Name).Parent = OWNER.Character
+        end
     end
 end
 
@@ -351,11 +343,11 @@ function Handler:Stop(Character: Model)
 end
 
 function Handler:Tween(Part: Instance, Duration: number, Properties: { [string]: any }): void
-    TweenService:Create(Part, TweenInfo.new(Duration), Properties):Play()
+    TweenServicCreate(Part, TweenInfo.new(Duration), Properties):Play()
 end
 
 function Handler:Chat(Message: any)
-    game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(Message)
+    game:GetService:e("TextChatService").TextChannels.RBXGeneral:SendAsync(Message)
 end
 
 function Handler:HttpGet(url: string | {string}): any
