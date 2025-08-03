@@ -378,6 +378,27 @@ function Handler:AnimPlay(ID: string, SPEED: number?, Time: number?, Smoothing: 
 	Animation:Destroy()
 end
 
+function Handler:AnimStop(ID: string, SPEED: number?)
+	for Index, Track in pairs(Handler:Humanoid(OWNER):GetPlayingAnimationTracks()) do
+		if Track.Animation.AnimationId:match("rbxassetid://" .. ID) then
+			if SPEED then
+				Track:Stop(SPEED)
+			else
+				Track:Stop()
+			end
+		end
+	end
+end
+
+function Handler:IsAnimPlaying(ID: string): boolean
+	for Index, Track in pairs(Handler:Humanoid(OWNER):GetPlayingAnimationTracks()) do
+		if Track.Animation.AnimationId:match("rbxassetid://" .. ID) and Track.IsPlaying then
+			return true
+		end
+	end
+	return false
+end
+
 function Handler:Tween(Part: Instance, Duration: number, Properties: { [string]: any }): void
     TweenService:Create(Part, TweenInfo.new(Duration), Properties):Play()
 end
