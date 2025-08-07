@@ -64,18 +64,6 @@ function Handler:HumanoidRootPart(v: Model)
     end
 end
 
-function Handler:Inverse(Key: string, State: {[string]: any}, Bool: any?): ()
-	if State[Key] then
-		State[Key] = Bool or false
-	end
-end
-
-function Handler:Reverse(Key: string, State: {[string]: any}, Bool: any?): ()
-	if not State[Key] then
-		State[Key] = Bool or true
-	end
-end
-
 function Handler:ChangeState(Number: number)
     pcall(function()
         Handler:Humanoid(OWNER):ChangeState(Number)
@@ -357,7 +345,7 @@ function Handler:Stop(Character: Model)
     end)
 end
 
-function Handler:AnimPlay(ID: string, SPEED: number?, Time: number?, Smoothing: number?)
+function Handler:AnimPlay(ID: string, Speed: number?, Time: number?, Smoothing: number?)
 	Handler:Stop(OWNER)
     
 	for Index, Tracks in pairs(Handler:Humanoid(OWNER):GetPlayingAnimationTracks()) do
@@ -371,17 +359,9 @@ function Handler:AnimPlay(ID: string, SPEED: number?, Time: number?, Smoothing: 
 	Playing = Handler:Humanoid(OWNER):LoadAnimation(Animation)
 	Playing.Priority = Enum.AnimationPriority.Action4
 
-	if tonumber(Smoothing) then
-		Playing:Play(Smoothing)
-	else
-		Playing:Play()
-	end
-	
-	if tonumber(SPEED) then
-		Playing:AdjustSpeed(SPEED)
-	else
-		Playing:AdjustSpeed(1)
-	end
+	Playing:Play(tonumber(Smoothing) or nil)
+
+	Playing:AdjustSpeed(tonumber(Speed) or 1)
 
 	if tonumber(Time) then
 		Playing.TimePosition = Time
@@ -390,14 +370,10 @@ function Handler:AnimPlay(ID: string, SPEED: number?, Time: number?, Smoothing: 
 	Animation:Destroy()
 end
 
-function Handler:AnimStop(ID: string, SPEED: number?)
+function Handler:AnimStop(ID: string, Speed: number?)
 	for Index, Track in pairs(Handler:Humanoid(OWNER):GetPlayingAnimationTracks()) do
 		if Track.Animation.AnimationId:match("rbxassetid://" .. ID) then
-			if SPEED then
-				Track:Stop(SPEED)
-			else
-				Track:Stop()
-			end
+            Track:Stop(Speed or nil)
 		end
 	end
 end
