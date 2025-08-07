@@ -64,6 +64,18 @@ function Handler:HumanoidRootPart(v: Model)
     end
 end
 
+function Handler:Inverse(Key: string, State: {[string]: any}, Bool: any?): ()
+	if State[Key] then
+		State[Key] = Bool or false
+	end
+end
+
+function Handler:Reverse(Key: string, State: {[string]: any}, Bool: any?): ()
+	if not State[Key] then
+		State[Key] = Bool or true
+	end
+end
+
 function Handler:ChangeState(Number: number)
     pcall(function()
         Handler:Humanoid(OWNER):ChangeState(Number)
