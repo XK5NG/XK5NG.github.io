@@ -346,10 +346,14 @@ function Handler:Stop(Character: Model)
 end
 
 function Handler:AnimPlay(ID: string, Speed: number?, Time: number?, Smoothing: number?)
+	if not Handler:Humanoid(OWNER) or not Handler:Humanoid(OWNER).Parent then
+		return
+	end
+
 	Handler:Stop(OWNER)
     
 	for Index, Tracks in pairs(Handler:Humanoid(OWNER):GetPlayingAnimationTracks()) do
-		if Tracks.Animation.AnimationId:match("rbxassetid://" .. ID) then
+		if Tracks.Animation and Tracks.Animation.AnimationId:match("rbxassetid://" .. ID) then
 			Tracks:Stop()
 		end
 	end
@@ -371,16 +375,24 @@ function Handler:AnimPlay(ID: string, Speed: number?, Time: number?, Smoothing: 
 end
 
 function Handler:AnimStop(ID: string, Speed: number?)
+	if not Handler:Humanoid(OWNER) or not Handler:Humanoid(OWNER).Parent then
+		return
+	end
+
 	for Index, Track in pairs(Handler:Humanoid(OWNER):GetPlayingAnimationTracks()) do
-		if Track.Animation.AnimationId:match("rbxassetid://" .. ID) then
+		if Track.Animation and Track.Animation.AnimationId:match("rbxassetid://" .. ID) then
             Track:Stop(Speed or nil)
 		end
 	end
 end
 
 function Handler:IsAnimPlaying(ID: string): boolean
+	if not Handler:Humanoid(OWNER) or not Handler:Humanoid(OWNER).Parent then
+		return
+	end
+	
 	for Index, Track in pairs(Handler:Humanoid(OWNER):GetPlayingAnimationTracks()) do
-		if Track.Animation.AnimationId:match("rbxassetid://" .. ID) and Track.IsPlaying then
+		if Track.Animation and Track.Animation.AnimationId:match("rbxassetid://" .. ID) and Track.IsPlaying then
 			return true
 		end
 	end
