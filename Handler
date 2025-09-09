@@ -8,7 +8,6 @@ local Workspace = service("Workspace")
 local ReplicatedStorage = service("ReplicatedStorage")
 local TweenService = service("TweenService")
 local TextChatService = service("TextChatService")
-local MainEvent = ReplicatedStorage:WaitForChild("MainEvent") or nil
 
 local Handler, Connections = {}, {}
 
@@ -451,7 +450,7 @@ end
 
 function Handler:Reload_Gun()
     if OWNER.Character:FindFirstChildWhichIsA("Tool") then
-        return MainEvent:FireServer("Reload", OWNER.Character:FindFirstChildWhichIsA("Tool"))
+        return ReplicatedStorage:WaitForChild("MainEvent"):FireServer("Reload", OWNER.Character:FindFirstChildWhichIsA("Tool"))
     end
 end
 
