@@ -360,7 +360,7 @@ function Handler:AnimPlay(ID: string, Speed: number?, Time: number?, Smoothing: 
 	local Animation = Instance.new("Animation", workspace)
 	Animation.AnimationId = "rbxassetid://" .. ID
 	Playing = Handler:Humanoid(OWNER):LoadAnimation(Animation)
-	Playing.Priority = Enum.AnimationPriority.Action
+	Playing.Priority = 4
 
 	Playing:Play(tonumber(Smoothing) or nil)
 
@@ -370,7 +370,7 @@ function Handler:AnimPlay(ID: string, Speed: number?, Time: number?, Smoothing: 
 		Playing.TimePosition = Time
 	end
 
-	Animation:Destroy()
+	--Animation:Destroy()
 end
 
 function Handler:AnimStop(ID: string, Speed: number?)
