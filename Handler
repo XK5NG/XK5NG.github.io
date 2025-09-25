@@ -348,8 +348,6 @@ function Handler:AnimPlay(ID: string, Speed: number?, Time: number?, Smoothing: 
 	if not Handler:Humanoid(OWNER) or not Handler:Humanoid(OWNER).Parent then
 		return
 	end
-
-	Handler:Stop(OWNER)
     
 	for Index, Tracks in pairs(Handler:Humanoid(OWNER):GetPlayingAnimationTracks()) do
 		if Tracks.Animation and Tracks.Animation.AnimationId:match("rbxassetid://" .. ID) then
