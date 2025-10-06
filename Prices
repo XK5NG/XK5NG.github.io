@@ -9,15 +9,15 @@ return {
 273,--Heavyweight 8
 133,--Jail key 9
 27,--BrownBag 10
-9835,--flame thrower 11
-1093,--flame ammo 12
-4098, --LMG 13
-328,--LMG ammo 14
-1694, --Rifle 15
-273,--Rifle ammo 16
-2131, --Aug 17
-87,--Aug ammo 18
-2513,--High medium armor 19
+0,--flame thrower 11
+0,--flame ammo 12
+0, --LMG 13
+0,--LMG ammo 14
+0, --Rifle 15
+0,--Rifle ammo 16
+0, --Aug 17
+0,--Aug ammo 18
+0,--High medium armor 19
 765,--Grenade 20
 300,--Bat 21
 350,--Shovel 22
