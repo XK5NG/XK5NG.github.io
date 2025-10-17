@@ -22,43 +22,43 @@ function Handler:GetChar(v: Model)
 end
 
 function Handler:Is_KO(v: Model)
-    if v.Character:FindFirstChild('BodyEffects') then
+    if v and v.Character and v.Character:FindFirstChild('BodyEffects') then
         if v.Character.BodyEffects:FindFirstChild('K.O') then
-            return v.Character.BodyEffects['K.O']
+            return v.Character.BodyEffects['K.O'].Value
         end
     end
 end
 
 function Handler:Is_Dead(v: Model)
-    if v.Character:FindFirstChild('BodyEffects') then
+    if v and v.Character and v.Character:FindFirstChild('BodyEffects') then
         if v.Character.BodyEffects:FindFirstChild('SDeath') then
-            return v.Character.BodyEffects['SDeath']
+            return v.Character.BodyEffects['SDeath'].Value
         end
     end
 end
 
 function Handler:Is_Attacking(v: Model)
-    if v.Character:FindFirstChild('BodyEffects') then
+    if v and v.Character and v.Character:FindFirstChild('BodyEffects') then
         if v.Character.BodyEffects:FindFirstChild('Attacking') then
-            return v.Character.BodyEffects['Attacking']
+            return v.Character.BodyEffects['Attacking'].Value
         end
     end
 end
 
 function Handler:Humanoid(v: Model)
-    if v.Character:FindFirstChildOfClass("Humanoid") then
+    if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") then
        return v.Character.Humanoid
     end
 end
 
 function Handler:UpperTorso(v: Model)
-    if v.Character:FindFirstChild("UpperTorso") then
+    if v and v.Character and v.Character:FindFirstChild("UpperTorso") then
        return v.Character.UpperTorso
     end
 end
 
 function Handler:HumanoidRootPart(v: Model)
-    if v.Character:FindFirstChild("HumanoidRootPart") then
+    if v and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
        return v.Character.HumanoidRootPart
     end
 end
