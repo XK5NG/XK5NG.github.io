@@ -368,7 +368,7 @@ function Handler:AnimPlay(ID: string, Speed: number?, Time: number?, Smoothing: 
 		Playing.TimePosition = Time
 	end
 
-	--Animation:Destroy()
+	Animation:Destroy()
 end
 
 function Handler:AnimStop(ID: string, Speed: number?)
