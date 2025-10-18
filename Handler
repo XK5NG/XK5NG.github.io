@@ -148,6 +148,7 @@ function Handler:Get_Mouse_Player(): Player?
 	for index = 1, #players do
 		if players[index] ~= OWNER and (
 			players[index].Character and
+            players[index].Character:FindFirstChild("Head") and
 			players[index].Character:FindFirstChild("Humanoid") and 
 			players[index].Character.Humanoid.Health > 0 
         ) then
