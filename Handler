@@ -24,7 +24,7 @@ end
 function Handler:Is_KO(v: Model)
     if v.Character:FindFirstChild('BodyEffects') then
         if v.Character.BodyEffects:FindFirstChild('K.O') then
-            return v.Character.BodyEffects['K.O'].Value
+            return v.Character.BodyEffects['K.O']
         end
     end
 end
@@ -32,7 +32,7 @@ end
 function Handler:Is_Dead(v: Model)
     if v.Character:FindFirstChild('BodyEffects') then
         if v.Character.BodyEffects:FindFirstChild('SDeath') then
-            return v.Character.BodyEffects['SDeath'].Value
+            return v.Character.BodyEffects['SDeath']
         end
     end
 end
@@ -40,7 +40,7 @@ end
 function Handler:Is_Attacking(v: Model)
     if v.Character:FindFirstChild('BodyEffects') then
         if v.Character.BodyEffects:FindFirstChild('Attacking') then
-            return v.Character.BodyEffects['Attacking'].Value
+            return v.Character.BodyEffects['Attacking']
         end
     end
 end
