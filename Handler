@@ -1,5 +1,3 @@
-getgenv().Connections = {}
-
 function Service(Service: string)
 	return cloneref(game:GetService(Service))
 end
@@ -16,8 +14,7 @@ local LocalPlayer = Players.LocalPlayer
 local Camera = Workspace.CurrentCamera
 
 local Handler = {}
-local Connections = getgenv().Connections
-
+local Connections = {}
 local Playing = nil
 
 function Handler:CloneRef(Service: string): Instance
