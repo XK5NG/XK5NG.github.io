@@ -217,9 +217,9 @@ function Handler:Unload()
         if typeof(Connection) == "RBXScriptConnection" and Connection.Connected then
             Connection:Disconnect()
         end
-
-        table.clear(Connections)
     end
+
+    table.clear(Connections)
 end
 
 function Handler:Pairs(Table: { [any]: any }, Callback: (any) -> ())
