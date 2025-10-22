@@ -218,7 +218,7 @@ function Handler:Unload()
             Connection:Disconnect()
         end
 
-        Connections[Name] = nil
+        table.clear(Connections)
     end
 end
 
