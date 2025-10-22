@@ -213,6 +213,10 @@ function Handler:AddConnection(Name: string | table, Connection: RBXScriptConnec
 end
 
 function Handler:Unload()
+    if not Connections or next(Connections) == nil then
+        return
+    end
+
     for Name, Connection in pairs(Connections) do
         if typeof(Connection) == "RBXScriptConnection" and Connection.Connected then
             Connection:Disconnect()
