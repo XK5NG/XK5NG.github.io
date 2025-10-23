@@ -228,12 +228,6 @@ function Handler:Unload()
     table.clear(Connections)
 end
 
-function Handler:Pairs(Table: { [any]: any }, Callback: (any) -> ())
-    for Index, Callback in pairs(Table) do
-        Callback(Callback)
-    end
-end
-
 function Handler:Create(Type: string, Properties: { [string]: any }): Instance
     if Properties.Name and (Properties.Parent or Workspace):FindFirstChild(Properties.Name) then
     	(Properties.Parent or Workspace):FindFirstChild(Properties.Name):Destroy()
@@ -331,9 +325,9 @@ function Handler:ZeroVelocityCharacter(Character: Model)
 end
 
 function Handler:Stop(Character: Model)
-    Handler:Pairs(Handler:Humanoid(Character):GetPlayingAnimationTracks(), function(v)
-        v:Stop()
-    end)
+    for Index, Track in pairs(Handler:Humanoid(Character):GetPlayingAnimationTracks()) do
+        Track:Stop()
+    end
 end
 
 function Handler:AnimPlay(ID: string, Speed: number?, Time: number?, Smoothing: number?)
