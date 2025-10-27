@@ -82,6 +82,34 @@ function Handler:Is_Crew(Player: Player, Target: Player): boolean
     return false
 end
 
+function Handler:Cache_Tool()
+    local Tool = LocalPlayer.Character:FindFirstChildOfClass("Tool")
+    if Tool then
+        local Handle = Tool:FindFirstChild("Handle")
+        if Handle then
+            local Offset = Vector3.new(0, 0, -Handle.Size.Z / 2)
+            local Ammo = Tool:FindFirstChild("Ammo") and Tool.Ammo.Value or 0
+            local MaxAmmo = Tool:FindFirstChild("MaxAmmo") and Tool.MaxAmmo.Value or 0
+            local Gun = Tool:FindFirstChild("GunClient") ~= nil
+            local Shotgun = Tool:FindFirstChild("GunClientShotgun") ~= nil
+            local Automatic = Tool:FindFirstChild("GunClientAutomatic") ~= nil
+            local Client = not (Gun or Shotgun or Automatic)
+
+            return {
+                Instance = Tool,
+                Handle = Handle,
+                Offset = Offset,
+                Ammo = Ammo,
+                MaxAmmo = MaxAmmo,
+                Gun = Gun,
+                Shotgun = Shotgun,
+                Automatic = Automatic,
+                Client = Client
+            }
+        end
+    end
+end
+
 function Handler:ChangeState(Number: number)
     pcall(function()
         Handler:Humanoid(LocalPlayer):ChangeState(Number)
