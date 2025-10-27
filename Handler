@@ -69,6 +69,12 @@ function Handler:HumanoidRootPart(Player: Model)
     end
 end
 
+function Handler:ForceField(Player: Model)
+    if Player and Player.Character and Player.Character:FindFirstChild("ForceField") then
+        return Player.Character.ForceField
+    end
+end
+
 function Handler:Is_Crew(Player: Player, Target: Player): boolean
     if Player and Target and Player:FindFirstChild("DataFolder") and Target:FindFirstChild("DataFolder") and Player.DataFolder:FindFirstChild("Information") and Target.DataFolder:FindFirstChild("Information") and Player.DataFolder.Information:FindFirstChild("Crew") and Target.DataFolder.Information:FindFirstChild("Crew") and Player.DataFolder.Information.Crew.Value == Target.DataFolder.Information.Crew.Value then
         return true
