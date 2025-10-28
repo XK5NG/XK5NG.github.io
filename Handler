@@ -76,31 +76,22 @@ function Handler:ForceField(Player: Model)
 end
 
 function Handler:Is_Crew(Player: Player, Target: Player): boolean
-    print("Is_Crew called with Player:", Player and Player.Name or "nil", "Target:", Target and Target.Name or "nil")
-    
-    if Player and Target and Player:FindFirstChild("PlayerGui") then
-        print("PlayerGui found")
-        local CrewGui = Player.PlayerGui:FindFirstChild("MainScreenGui")
-        if CrewGui and CrewGui:FindFirstChild("Crew") and CrewGui.Crew:FindFirstChild("Current") and CrewGui.Crew.Current:FindFirstChild("ScrollingFrame") then
-            print("Checking crew for:", Target.Name)
-            for Index, Template in pairs(CrewGui.Crew.Current.ScrollingFrame:GetChildren()) do
-                print("Template:", Template.Name, "IsFrame:", Template:IsA("Frame"))
-                if Template:IsA("Frame") and Template:FindFirstChild("PlrName") then
-                    print("PlrName.Text:", Template.PlrName.Text)
-                    if Template.PlrName.Text == Target.Name then
-                        print("MATCH FOUND!")
-                        return true
-                    end
-                end
-            end
-            print("No match found in crew list")
-        else
-            print("CrewGui path not found")
-        end
-    else
-        print("Player or Target or PlayerGui not found")
-    end
-    return false
+	if Player and Target then
+		local PlayerData = Player:FindFirstChild("DataFolder")
+		local TargetData = Target:FindFirstChild("DataFolder")
+		if PlayerData and TargetData then
+			local PlayerInfo = PlayerData:FindFirstChild("Information")
+			local TargetInfo = TargetData:FindFirstChild("Information")
+			if PlayerInfo and TargetInfo then
+				local PlayerCrew = PlayerInfo:FindFirstChild("Crew")
+				local TargetCrew = TargetInfo:FindFirstChild("Crew")
+				if PlayerCrew and TargetCrew and PlayerCrew.Value ~= "" and TargetCrew.Value ~= "" and PlayerCrew.Value == TargetCrew.Value then
+					return true
+				end
+			end
+		end
+	end
+	return false
 end
 
 function Handler:Cache_Tool()
