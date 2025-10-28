@@ -76,7 +76,10 @@ function Handler:ForceField(Player: Model)
 end
 
 function Handler:Is_Crew(Player: Player, Target: Player): boolean
+    print("Is_Crew called with Player:", Player and Player.Name or "nil", "Target:", Target and Target.Name or "nil")
+    
     if Player and Target and Player:FindFirstChild("PlayerGui") then
+        print("PlayerGui found")
         local CrewGui = Player.PlayerGui:FindFirstChild("MainScreenGui")
         if CrewGui and CrewGui:FindFirstChild("Crew") and CrewGui.Crew:FindFirstChild("Current") and CrewGui.Crew.Current:FindFirstChild("ScrollingFrame") then
             print("Checking crew for:", Target.Name)
