@@ -76,8 +76,17 @@ function Handler:ForceField(Player: Model)
 end
 
 function Handler:Is_Crew(Player: Player, Target: Player): boolean
-    if Player and Target and Player:FindFirstChild("DataFolder") and Target:FindFirstChild("DataFolder") and Player.DataFolder:FindFirstChild("Information") and Target.DataFolder:FindFirstChild("Information") and Player.DataFolder.Information:FindFirstChild("Crew") and Target.DataFolder.Information:FindFirstChild("Crew") and Player.DataFolder.Information.Crew.Value == Target.DataFolder.Information.Crew.Value then
-        return true
+    if Player and Target and Player:FindFirstChild("PlayerGui") then
+        local CrewGui = Player.PlayerGui:FindFirstChild("MainScreenGui")
+        if CrewGui and CrewGui:FindFirstChild("Crew") and CrewGui.Crew:FindFirstChild("Current") and CrewGui.Crew.Current:FindFirstChild("ScrollingFrame") then
+            for Index, Template in pairs(CrewGui.Crew.Current.ScrollingFrame:GetChildren()) do
+                if Template:IsA("Frame") and Template:FindFirstChild("PlrName") then
+                    if Template.PlrName.Text == Target.Name then
+                        return true
+                    end
+                end
+            end
+        end
     end
     return false
 end
