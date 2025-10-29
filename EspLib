@@ -689,7 +689,7 @@ end
 
 -- game specific functions
 function EspInterface.getWeapon(player)
-    return player.Character and player.Character:FindFirstChildWhichIsA("Tool") and player.Character:FindFirstChildWhichIsA("Tool").Name or "nan"
+    return player.Character and player.Character:FindFirstChildWhichIsA("Tool") and player.Character:FindFirstChildWhichIsA("Tool").Name or "none"
 end
 
 function EspInterface.isFriendly(player)
