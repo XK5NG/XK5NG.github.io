@@ -1,5 +1,6 @@
-    game.StarterGui:SetCore("SendNotification", {
-        Title = "error";
-        Text = "Looks like you executed the script on yourself, please execute the script on the alt account.";
-        Duration = 30;
-    })
+--whoops
+game.StarterGui:SetCore("SendNotification", {
+    Title = "discord.gg/stando";
+    Text = "this script is outdated, get a new version in the discord server. this version is 8 month old💀";
+    Duration = 30;
+})
