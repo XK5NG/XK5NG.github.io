@@ -142,7 +142,6 @@ local ESP = {
                 'Right Leg',
             },
             R15Parts = {
-                'HumanoidRootPart',
                 'UpperTorso',
                 'LowerTorso',
                 'Head',
