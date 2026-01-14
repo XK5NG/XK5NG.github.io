@@ -5,5 +5,6 @@ return {
 "Because i forgot to add the weld checker",
 "So if you use the flame mode in unsupported",
 "It will still anchor the target and it wont hit",
-"Its not suppose to anchor the target if not supported",
+"Its not suppose to anchor the target",
+"when its not supported",
 }
