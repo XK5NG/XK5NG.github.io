@@ -1,3 +1,9 @@
 return {
 "discord.gg/stando",
+"For mobile user or xeno user",
+"Dont use the flame mode for ragebot",
+"Because i forgot to add the weld checker",
+"So if you use the flame mode in unsupported",
+"It will still anchor the target and it wont hit",
+"Its not suppose to anchor the target if not supported",
 }
