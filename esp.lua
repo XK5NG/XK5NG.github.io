@@ -1,5 +1,3 @@
---thx k0nkx
-
 local BoxESPLib = {}
 
 if getgenv()._BoxESP then
@@ -142,6 +140,7 @@ local ESP = {
                 'Right Leg',
             },
             R15Parts = {
+                'HumanoidRootPart',
                 'UpperTorso',
                 'LowerTorso',
                 'Head',
@@ -1029,36 +1028,44 @@ function BoxESPLib:Destroy()
 end
 
 function BoxESPLib:CreateUI(Tab)
+    local espSection = Tab:Section("ESP Settings", "left")
+    local highlightSection = Tab:Section("Highlight Settings", "right")
     
-    local espEnabled = Tab:Toggle("Enable ESP", ESP.Enabled, function(state)
+    local espEnabled = espSection:Toggle("Enable ESP", ESP.Enabled, function(state)
         self:SetEnabled(state)
     end)
-    Tab:Spliter()
-    local boxEnabled = Tab:Toggle("Box ESP", ESP.Settings.Box.Enabled, function(state)
+    
+    espSection:Spliter()
+    
+    local boxEnabled = espSection:Toggle("Box ESP", ESP.Settings.Box.Enabled, function(state)
         self:SetSetting("Box", "Enabled", state)
     end)
     
-    local boxColor = Tab:Colorpicker("Box Color", ESP.Settings.Box.Color, function(color)
+    local boxColor = espSection:Colorpicker("Box Color", ESP.Settings.Box.Color, function(color)
         self:SetSetting("Box", "Color", color)
     end)
-    
-    --[[local boxTeamColor = Tab:Toggle("Team Color", ESP.Settings.Box.ColorTeam, function(state)
+    --[[
+    local boxTeamColor = espSection:Toggle("Team Color", ESP.Settings.Box.ColorTeam, function(state)
         self:SetSetting("Box", "ColorTeam", state)
     end)]]
-    Tab:Spliter()
-    local boxFill = Tab:Toggle("Box Fill", ESP.Settings.Box.Filled, function(state)
+    
+    espSection:Spliter()
+    
+    local boxFill = espSection:Toggle("Box Fill", ESP.Settings.Box.Filled, function(state)
         self:SetSetting("Box", "Filled", state)
     end)
     
-    local outlineEnabled = Tab:Toggle("Outline", ESP.Settings.Outline.Enabled, function(state)
+    local outlineEnabled = espSection:Toggle("Outline", ESP.Settings.Outline.Enabled, function(state)
         self:SetSetting("Outline", "Enabled", state)
     end)
     
-    local outlineColor = Tab:Colorpicker("Outline Color", ESP.Settings.Outline.Color, function(color)
+    local outlineColor = espSection:Colorpicker("Outline Color", ESP.Settings.Outline.Color, function(color)
         self:SetSetting("Outline", "Color", color)
     end)
-    Tab:Spliter()
-    local healthbarEnabled = Tab:Toggle("Health Bar", ESP.Settings.Healthbar.Enabled, function(state)
+    
+    espSection:Spliter()
+    
+    local healthbarEnabled = espSection:Toggle("Health Bar", ESP.Settings.Healthbar.Enabled, function(state)
         self:SetSetting("Healthbar", "Enabled", state)
     end)
     
@@ -1066,7 +1073,7 @@ function BoxESPLib:CreateUI(Tab)
     local color1 = gradientColors.Keypoints[1].Value
     local color2 = gradientColors.Keypoints[2].Value
     
-    local healthbarColor = Tab:Colorpicker("Health Bar Gradient", 2, {
+    local healthbarColor = espSection:Colorpicker("Health Bar Gradient", 2, {
         color1,
         color2
     }, function(colors)
@@ -1081,47 +1088,126 @@ function BoxESPLib:CreateUI(Tab)
             end
         end
     end)
-
-    local healthChangeEnabled = Tab:Toggle("Health Changes", ESP.Settings.HealthChange.Enabled, function(state)
+    
+    espSection:Spliter()
+    
+    local healthChangeEnabled = espSection:Toggle("Health Changes", ESP.Settings.HealthChange.Enabled, function(state)
         self:SetSetting("HealthChange", "Enabled", state)
     end)
-    Tab:Spliter()
-    local nametagEnabled = Tab:Toggle("Nametags", ESP.Settings.Nametag.Enabled, function(state)
+    
+    local nametagEnabled = espSection:Toggle("Nametags", ESP.Settings.Nametag.Enabled, function(state)
         self:SetSetting("Nametag", "Enabled", state)
     end)
     
-    local useDisplayName = Tab:Toggle("Use Display Name", ESP.Settings.Nametag.UseDisplayName, function(state)
+    local useDisplayName = espSection:Toggle("Use Display Name", ESP.Settings.Nametag.UseDisplayName, function(state)
         self:SetSetting("Nametag", "UseDisplayName", state)
     end)
-    Tab:Spliter()
-    local distanceEnabled = Tab:Toggle("Distance", ESP.Settings.Distance.Enabled, function(state)
+    
+    espSection:Spliter()
+    
+    local distanceEnabled = espSection:Toggle("Distance", ESP.Settings.Distance.Enabled, function(state)
         self:SetSetting("Distance", "Enabled", state)
     end)
     
-    local velocityEnabled = Tab:Toggle("Velocity Indicator", ESP.Settings.Velocity.Enabled, function(state)
+    local velocityEnabled = espSection:Toggle("Velocity", ESP.Settings.Velocity.Enabled, function(state)
         self:SetSetting("Velocity", "Enabled", state)
     end)
-    Tab:Spliter()
-    local highlightEnabled = Tab:Toggle("Highlight", ESP.Settings.Highlight.Enabled, function(state)
-        self:SetSetting("Highlight", "Enabled", state)
-    end)
     
-    --[[local ignoreTeam = Tab:Toggle("Ignore Team", ESP.Settings.IgnoreTeam, function(state)
+    espSection:Spliter()
+    
+    --[[] Team settings
+    local ignoreTeam = espSection:Toggle("Ignore Team", ESP.Settings.IgnoreTeam, function(state)
         self:SetSetting("IgnoreTeam", state)
     end)
     
-    local keybindText = Tab:Label("Current Keybind: " .. tostring(ESP.Settings.Keybind))
+    local localDebug = espSection:Toggle("Local Player Debug", ESP.Settings.LocalDebug, function(state)
+        self:SetSetting("LocalDebug", state)
+        
+        -- Update ESP for local player
+        if state then
+            HandlePlayerAdded(Players.LocalPlayer)
+        else
+            RemoveESP(Players.LocalPlayer)
+        end
+    end)]]
     
-    Tab:Button("Change Keybind", function()
+    -- Right section: Highlight settings
+    
+    local highlightEnabled = highlightSection:Toggle("Highlight", ESP.Settings.Highlight.Enabled, function(state)
+        self:SetSetting("Highlight", "Enabled", state)
+    end)
+    
+    local highlightColors = highlightSection:Colorpicker("Highlight Colors", 2, {
+        ESP.Settings.Highlight.Color,
+        ESP.Settings.Highlight.OutlineColor
+    }, function(colors)
+        if colors[1] then
+            self:SetSetting("Highlight", "Color", colors[1])
+        end
+        if colors[2] then
+            self:SetSetting("Highlight", "OutlineColor", colors[2])
+        end
+    end)
+    
+    highlightSection:Spliter()
+    
+    local fillTransparency = highlightSection:Slider("Fill Transparency", 0, 100, ESP.Settings.Highlight.Transparency * 100, function(value)
+        local transparency = value / 100
+        self:SetSetting("Highlight", "Transparency", transparency)
+        
+        for _, guis in pairs(ESP.GUIs) do
+            if guis.highlight then
+                guis.highlight.FillTransparency = transparency
+            end
+        end
+    end, false, "%")
+    
+    local outlineTransparency = highlightSection:Slider("Outline Transparency", 0, 100, ESP.Settings.Highlight.OutlineTransparency * 100, function(value)
+        local transparency = value / 100
+        self:SetSetting("Highlight", "OutlineTransparency", transparency)
+        
+        for _, guis in pairs(ESP.GUIs) do
+            if guis.highlight then
+                guis.highlight.OutlineTransparency = transparency
+            end
+        end
+    end, false, "%")
+    
+    highlightSection:Spliter()
+    
+    local boxScale = highlightSection:Slider("Box Scale", 10, 30, ESP.Settings.Box.Scale * 10, function(value)
+        self:SetSetting("Box", "Scale", value / 10)
+    end, true)
+    
+    local simpleBoxMode = highlightSection:Toggle("Simple Box Mode", ESP.Settings.SimpleBoxMode, function(state)
+        self:SetSetting("SimpleBoxMode", state)
+    end)
+    
+    highlightSection:Spliter()
+    
+    local boxThickness = highlightSection:Slider("Box Thickness", 5, 50, ESP.Settings.Box.Thickness * 10, function(value)
+        self:SetSetting("Box", "Thickness", value / 10)
+    end, true)
+    
+    local healthbarWidth = highlightSection:Slider("Health Bar Width", 1, 10, ESP.Settings.Healthbar.Width, function(value)
+        self:SetSetting("Healthbar", "Width", value)
+    end)
+    
+    --[[highlightSection:Spliter()
+    
+    -- Keybind settings
+    local keybindText = highlightSection:Label("Current Keybind: " .. tostring(ESP.Settings.Keybind))
+    
+    highlightSection:Button("Change Keybind", function()
         local listening = true
-        keybindText:SetText("Press any key...")
+        keybindText:Change("Press any key...")
         
         local connection
         connection = UserInputService.InputBegan:Connect(function(input)
             if listening then
                 if input.KeyCode ~= Enum.KeyCode.Unknown then
                     self:SetKeybind(input.KeyCode)
-                    keybindText:SetText("Current Keybind: " .. tostring(input.KeyCode))
+                    keybindText:Change("Current Keybind: " .. tostring(input.KeyCode))
                     listening = false
                     connection:Disconnect()
                 end
@@ -1132,12 +1218,15 @@ function BoxESPLib:CreateUI(Tab)
             if listening then
                 listening = false
                 connection:Disconnect()
-                keybindText:SetText("Current Keybind: " .. tostring(ESP.Settings.Keybind))
+                keybindText:Change("Current Keybind: " .. tostring(ESP.Settings.Keybind))
             end
         end)
     end)
     
-    Tab:Button("Reset to Defaults", function()
+    highlightSection:Spliter()
+    
+    Reset to defaults button
+    highlightSection:Button("Reset to Defaults", function()
         local defaultSettings = {
             Keybind = Enum.KeyCode.End,
             LocalDebug = false,
@@ -1145,7 +1234,7 @@ function BoxESPLib:CreateUI(Tab)
             SimpleBoxMode = true,
 
             Box = {
-                Enabled = true,
+                Enabled = false,
                 Color = Color3.fromRGB(255, 255, 255),
                 Thickness = 1.5,
                 Transparency = 0,
@@ -1157,23 +1246,32 @@ function BoxESPLib:CreateUI(Tab)
             },
 
             Outline = {
-                Enabled = true,
+                Enabled = false,
                 Color = Color3.fromRGB(0, 0, 0),
                 Thickness = 1,
                 Transparency = 0,
             },
 
             Healthbar = {
-                Enabled = true,
+                Enabled = false,
                 Width = 3,
                 Background = Color3.fromRGB(40, 40, 40),
                 BackgroundTransparency = 0,
                 OutlineColor = Color3.fromRGB(0, 0, 0),
                 OutlineTransparency = 0,
+
+                Gradient = {
+                    Colors = ColorSequence.new({
+                        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 97, 242)),
+                        ColorSequenceKeypoint.new(1, Color3.fromRGB(137, 87, 255)),
+                    }),
+                    LerpAnimation = true,
+                    LerpSpeed = 0.028,
+                },
             },
 
             HealthChange = {
-                Enabled = true,
+                Enabled = false,
                 Font = Enum.Font.DenkOne,
                 Size = 11,
                 Color = Color3.fromRGB(255, 255, 255),
@@ -1186,7 +1284,7 @@ function BoxESPLib:CreateUI(Tab)
             },
 
             Nametag = {
-                Enabled = true,
+                Enabled = false,
                 Font = Enum.Font.SourceSansBold,
                 Size = 13,
                 Color = Color3.fromRGB(255, 255, 255),
@@ -1198,7 +1296,7 @@ function BoxESPLib:CreateUI(Tab)
             },
 
             Distance = {
-                Enabled = true,
+                Enabled = false,
                 Font = Enum.Font.SourceSansBold,
                 Size = 13,
                 Color = Color3.fromRGB(255, 255, 255),
@@ -1209,7 +1307,7 @@ function BoxESPLib:CreateUI(Tab)
             },
 
             Velocity = {
-                Enabled = true,
+                Enabled = false,
                 Font = Enum.Font.SourceSansBold,
                 Size = 13,
                 Color = Color3.fromRGB(255, 255, 255),
@@ -1219,7 +1317,7 @@ function BoxESPLib:CreateUI(Tab)
             },
 
             Highlight = {
-                Enabled = true,
+                Enabled = false,
                 Color = Color3.fromRGB(255, 255, 255),
                 Transparency = 0.5,
                 OutlineColor = Color3.fromRGB(255, 255, 255),
@@ -1237,23 +1335,43 @@ function BoxESPLib:CreateUI(Tab)
             end
         end
         
-        espEnabled:SetValue(true)
-        boxEnabled:SetValue(true)
+        -- Update all UI elements
+        espEnabled:SetValue(false)
+        boxEnabled:SetValue(false)
         boxColor:SetColor(Color3.fromRGB(255, 255, 255))
         boxTeamColor:SetValue(true)
-        boxThickness:SetValue(15)
         boxFill:SetValue(false)
-        outlineEnabled:SetValue(true)
+        outlineEnabled:SetValue(false)
         outlineColor:SetColor(Color3.fromRGB(0, 0, 0))
-        healthbarEnabled:SetValue(true)
-        healthChangeEnabled:SetValue(true)
-        nametagEnabled:SetValue(true)
+        healthbarEnabled:SetValue(false)
+        
+        -- Update healthbar gradient colors
+        local gradientColors = ESP.Settings.Healthbar.Gradient.Colors
+        if healthbarColor and healthbarColor.SetColor then
+            healthbarColor:SetColor(gradientColors.Keypoints[1].Value)
+        end
+        
+        healthChangeEnabled:SetValue(false)
+        nametagEnabled:SetValue(false)
         useDisplayName:SetValue(false)
-        distanceEnabled:SetValue(true)
-        velocityEnabled:SetValue(true)
-        highlightEnabled:SetValue(true)
+        distanceEnabled:SetValue(false)
+        velocityEnabled:SetValue(false)
+        highlightEnabled:SetValue(false)
         ignoreTeam:SetValue(false)
-        keybindText:SetText("Current Keybind: End")
+        localDebug:SetValue(false)
+        
+        -- Update highlight colors
+        if highlightColors and highlightColors.SetColor then
+            highlightColors:SetColor(ESP.Settings.Highlight.Color)
+        end
+        
+        fillTransparency:SetValue(50) -- 0.5 * 100
+        outlineTransparency:SetValue(8) -- 0.08 * 100
+        boxScale:SetValue(15) -- 1.5 * 10
+        simpleBoxMode:SetValue(true)
+        boxThickness:SetValue(15) -- 1.5 * 10
+        healthbarWidth:SetValue(3)
+        keybindText:Change("Current Keybind: End")
     end)]]
     
     return {
@@ -1271,13 +1389,21 @@ function BoxESPLib:CreateUI(Tab)
             velocityEnabled = velocityEnabled,
             highlightEnabled = highlightEnabled,
             ignoreTeam = ignoreTeam,
+            localDebug = localDebug,
+            simpleBoxMode = simpleBoxMode,
         },
         Colorpickers = {
             boxColor = boxColor,
             outlineColor = outlineColor,
+            healthbarColor = healthbarColor,
+            highlightColors = highlightColors,
         },
         Sliders = {
             boxThickness = boxThickness,
+            fillTransparency = fillTransparency,
+            outlineTransparency = outlineTransparency,
+            boxScale = boxScale,
+            healthbarWidth = healthbarWidth,
         },
         Labels = {
             keybindText = keybindText,
