@@ -1,7 +1,7 @@
 getgenv().Connections = {}
 
-function Service(Service: string)
-	return cloneref(game:GetService(Service))
+local function Service(Service: string)
+	return cloneref and cloneref(game:GetService(Service)) or game:GetService(Service)
 end
 
 local Players = Service("Players")
@@ -20,7 +20,7 @@ local Connections = getgenv().Connections
 local Playing = nil
 
 function Handler:CloneRef(Service: string): Instance
-    return cloneref(game:GetService(Service))
+	return cloneref and cloneref(game:GetService(Service)) or game:GetService(Service)
 end
 
 function Handler:GetChar(Player: Model)
