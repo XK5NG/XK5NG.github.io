@@ -23,10 +23,6 @@ function Handler:CloneRef(Service: string): Instance
 	return cloneref and cloneref(game:GetService(Service)) or game:GetService(Service)
 end
 
-function Handler:GetChar(Player: Model)
-    return LocalPlayer.Character:FindFirstChild(Player.Name)
-end
-
 function Handler:Is_KO(Player: Model)
     if Player and Player.Character and Player.Character:FindFirstChild("BodyEffects") then
         if Player.Character.BodyEffects:FindFirstChild("K.O") then
@@ -74,6 +70,12 @@ end
 function Handler:HumanoidRootPart(Player: Model)
     if Player and Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
         return Player.Character.HumanoidRootPart
+    end
+end
+
+function Handler:Head(Player: Model)
+    if Player and Player.Character and Player.Character:FindFirstChild("Head") then
+        return Player.Character.Head
     end
 end
 
@@ -131,9 +133,7 @@ function Handler:Cache_Tool()
 end
 
 function Handler:ChangeState(Number: number)
-    pcall(function()
-        Handler:Humanoid(LocalPlayer):ChangeState(Number)
-    end)
+    Handler:Humanoid(LocalPlayer):ChangeState(Number)
 end
 
 function Handler:GetAsset(Result: {[string]: string}): {[string]: Instance}
