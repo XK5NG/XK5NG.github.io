@@ -1,0 +1,202 @@
+return {
+    Name = "Ribbon",
+    Rig = "R6",
+    MountOverrides = { ["Torso"] = "UpperTorso" },
+    Parts = {
+        ["Head"] = {
+            {
+                ClassName = "Attachment",
+                Name = "Head Center",
+                Properties = {
+                    Visible = false,
+                },
+                Children = {
+                    {
+                        ClassName = "ParticleEmitter",
+                        Properties = {
+                            Acceleration = Vector3.new(0, -0.75, 0),
+                            Brightness = 1.5,
+                            Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)), ColorSequenceKeypoint.new(0.515806973, Color3.new(1, 0.20784314, 0.960784316)), ColorSequenceKeypoint.new(1, Color3.new(0.160784319, 1, 0.356862754))}),
+                            Drag = 5.5,
+                            FlipbookStartRandom = false,
+                            Lifetime = NumberRange.new(2, 2),
+                            LightEmission = 0.899999976,
+                            LockedToPart = true,
+                            Rate = 3,
+                            RotSpeed = NumberRange.new(-75, 75),
+                            Rotation = NumberRange.new(-360, 360),
+                            Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.300000012, 0.300000012), NumberSequenceKeypoint.new(0.800000012, 0.400000006, 0.0555999987), NumberSequenceKeypoint.new(0.895366192, 0.485436916, 0.0450138859), NumberSequenceKeypoint.new(0.950672626, 0.606796145, 0.0366541594), NumberSequenceKeypoint.new(0.982062757, 0.849514604, 0.0162325613), NumberSequenceKeypoint.new(1, 1.18932009)}),
+                            Speed = NumberRange.new(6.5, 6.5),
+                            SpreadAngle = Vector2.new(90, 90),
+                            Texture = "rbxassetid://8966822271",
+                            TimeScale = 0.699999988,
+                            Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 1), NumberSequenceKeypoint.new(0.100000001, 1), NumberSequenceKeypoint.new(0.145739913, 0.941747546), NumberSequenceKeypoint.new(0.192077726, 0.703883529), NumberSequenceKeypoint.new(0.219730943, 0.337378621), NumberSequenceKeypoint.new(0.232436478, 0.101941764), NumberSequenceKeypoint.new(0.240657702, 0.0339805484), NumberSequenceKeypoint.new(0.252615839, 0), NumberSequenceKeypoint.new(0.491778761, 0.0631067753), NumberSequenceKeypoint.new(0.685351253, 0.157766998), NumberSequenceKeypoint.new(0.822122574, 0.313106775), NumberSequenceKeypoint.new(0.932735443, 0.5825243), NumberSequenceKeypoint.new(0.983557522, 0.822815537), NumberSequenceKeypoint.new(1, 1)}),
+                            WindAffectsDrag = false,
+                            ZOffset = -3,
+                        },
+                    },
+                },
+            },
+        },
+        ["Left Arm"] = {
+        },
+        ["Left Leg"] = {
+        },
+        ["Right Arm"] = {
+        },
+        ["Right Leg"] = {
+        },
+        ["Torso"] = {
+            {
+                ClassName = "Attachment",
+                Name = "Center Middle",
+                Properties = {
+                    CFrame = CFrame.new(0, -2.9000001, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+                    Visible = false,
+                },
+                Children = {
+                    {
+                        ClassName = "ParticleEmitter",
+                        Properties = {
+                            Acceleration = Vector3.new(0, 3.5, 0),
+                            Brightness = 3.20000005,
+                            Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 0.752941191, 0.75686276)), ColorSequenceKeypoint.new(1, Color3.new(1, 0.752941191, 0.75686276))}),
+                            Drag = 1,
+                            FlipbookStartRandom = false,
+                            Lifetime = NumberRange.new(2.5, 2.5),
+                            LockedToPart = true,
+                            Orientation = Enum.ParticleOrientation.VelocityParallel,
+                            Rate = 10,
+                            RotSpeed = NumberRange.new(-20, 20),
+                            Rotation = NumberRange.new(-90, -90),
+                            Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.100000001, 0.100000001), NumberSequenceKeypoint.new(1, 0.100000001, 0.100000001)}),
+                            Speed = NumberRange.new(2.5, 2.5),
+                            SpreadAngle = Vector2.new(90, 90),
+                            Squash = NumberSequence.new({NumberSequenceKeypoint.new(0, 0, 0.200000003), NumberSequenceKeypoint.new(0.699551582, 0.204545259, 0.0699551553), NumberSequenceKeypoint.new(0.846786261, 0.318181515, 0.0628204271), NumberSequenceKeypoint.new(0.9431988, 0.5, 0.0355471745), NumberSequenceKeypoint.new(1, 0.75)}),
+                            Texture = "rbxassetid://9148943448",
+                            TimeScale = 0.800000012,
+                            Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 1), NumberSequenceKeypoint.new(0.327146173, 1), NumberSequenceKeypoint.new(0.342000008, 0.300000012, 0.300000012), NumberSequenceKeypoint.new(0.750999987, 0.5, 0.5), NumberSequenceKeypoint.new(1, 1)}),
+                            WindAffectsDrag = false,
+                            ZOffset = -1,
+                        },
+                    },
+                    {
+                        ClassName = "PointLight",
+                        Properties = {
+                            Brightness = 7,
+                            Color = Color3.new(1, 0.670588255, 0.831372619),
+                            Range = 6,
+                            Shadows = true,
+                        },
+                    },
+                },
+            },
+            {
+                ClassName = "Attachment",
+                Name = "Left Front",
+                Properties = {
+                    CFrame = CFrame.new(-1.12502289, 0.5, -1.21650696, -0.75, 0.5, -0.433012694, 0.433012635, 0.866025448, 0.25000003, 0.5, 5.9604055e-08, -0.866025388),
+                    Visible = false,
+                },
+            },
+            {
+                ClassName = "Attachment",
+                Name = "Left Side",
+                Properties = {
+                    CFrame = CFrame.new(-1.5, -1.5, 0, 0, 0, -1.00000012, -0.707106829, 0.707106829, 0, 0.707106829, 0.707106829, 0),
+                    Visible = false,
+                },
+            },
+            {
+                ClassName = "Attachment",
+                Name = "Right Front",
+                Properties = {
+                    CFrame = CFrame.new(1.10671997, 0.5, -1.18750763, 0.75000006, -0.5, -0.433012754, 0.433012694, 0.866025507, -0.25, 0.5, 9.75729393e-12, 0.866025567),
+                    Visible = false,
+                },
+            },
+            {
+                ClassName = "Attachment",
+                Name = "Right Side",
+                Properties = {
+                    CFrame = CFrame.new(1.5, -1.5, 0, 0, 0, -1.00000012, -0.707106829, 0.707106829, 0, 0.707106829, 0.707106829, 0),
+                    Visible = false,
+                },
+            },
+            {
+                ClassName = "Attachment",
+                Name = "Top Back",
+                Properties = {
+                    CFrame = CFrame.new(0, 1.10000038, 1, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+                    Visible = false,
+                },
+            },
+            {
+                ClassName = "Beam",
+                Name = "raiment1",
+                Properties = {
+                    Attachment0 = "@Top Back",
+                    Attachment1 = "@Right Front",
+                    Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 0.239215702, 0.631372571)), ColorSequenceKeypoint.new(1, Color3.new(1, 0.619607866, 0.627451003))}),
+                    CurveSize0 = 1,
+                    CurveSize1 = -4,
+                    FaceCamera = false,
+                    LightEmission = 1,
+                    Segments = 100,
+                    Texture = "http://www.roblox.com/asset/?id=9149300042",
+                    TextureSpeed = 0.300000012,
+                    Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(1, 0.5)}),
+                },
+            },
+            {
+                ClassName = "Beam",
+                Name = "raiment1b",
+                Properties = {
+                    Attachment0 = "@Right Front",
+                    Attachment1 = "@Right Side",
+                    Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 0.619607866, 0.627451003)), ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))}),
+                    CurveSize0 = -2,
+                    FaceCamera = false,
+                    LightEmission = 1,
+                    Segments = 100,
+                    Texture = "http://www.roblox.com/asset/?id=9149300042",
+                    TextureSpeed = 0.300000012,
+                    Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 1)}),
+                },
+            },
+            {
+                ClassName = "Beam",
+                Name = "raiment2",
+                Properties = {
+                    Attachment0 = "@Top Back",
+                    Attachment1 = "@Left Front",
+                    Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 0.239215702, 0.631372571)), ColorSequenceKeypoint.new(1, Color3.new(1, 0.619607866, 0.627451003))}),
+                    CurveSize0 = 1,
+                    CurveSize1 = -4,
+                    FaceCamera = false,
+                    LightEmission = 1,
+                    Segments = 100,
+                    Texture = "http://www.roblox.com/asset/?id=9149300042",
+                    TextureSpeed = 0.300000012,
+                    Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(1, 0.5)}),
+                },
+            },
+            {
+                ClassName = "Beam",
+                Name = "raiment2b",
+                Properties = {
+                    Attachment0 = "@Left Front",
+                    Attachment1 = "@Left Side",
+                    Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 0.619607866, 0.627451003)), ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))}),
+                    CurveSize0 = -2,
+                    FaceCamera = false,
+                    LightEmission = 1,
+                    Segments = 100,
+                    Texture = "http://www.roblox.com/asset/?id=9149300042",
+                    TextureSpeed = 0.300000012,
+                    Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 1)}),
+                },
+            },
+        },
+    },
+}
