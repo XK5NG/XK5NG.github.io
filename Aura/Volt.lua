@@ -1,6 +1,7 @@
 return {
     Name = "Volt",
     Rig = "R6",
+    MountOverrides = { Torso = "UpperTorso" },
     Parts = {
         ["Torso"] = {
             {
