@@ -1,5 +1,5 @@
 local BoxESPLib = {}
-
+local CoreGui = cloneref(game:GetService("CoreGui"))
 if getgenv()._BoxESP then
     for _, c in ipairs(getgenv()._BoxESP.Connections) do
         pcall(function() c:Disconnect() end)
@@ -17,8 +17,8 @@ if getgenv()._BoxESP then
         end
     end
     
-    if game.CoreGui:FindFirstChild('BoxESPScreenGui') then
-        pcall(function() game.CoreGui.BoxESPScreenGui:Destroy() end)
+    if CoreGui:FindFirstChild('BoxESPScreenGui') then
+        pcall(function() CoreGui.BoxESPScreenGui:Destroy() end)
     end
     
     getgenv()._BoxESP = nil
@@ -164,9 +164,9 @@ local ESP = {
 getgenv()._BoxESP = ESP
 
 local ScreenGui
-local RunService = game:GetService('RunService')
-local Players = game:GetService('Players')
-local UserInputService = game:GetService('UserInputService')
+local RunService = cloneref(game:GetService('RunService'))
+local Players = cloneref(game:GetService('Players'))
+local UserInputService = cloneref(game:GetService('UserInputService'))
 local Camera = workspace.CurrentCamera
 
 local function Get3DBounds(char)
@@ -188,20 +188,9 @@ local function Get3DBounds(char)
     end
 
     local min, max = Vector3.new(math.huge, math.huge, math.huge), Vector3.new(-math.huge, -math.huge, -math.huge)
-
-    for _, part in ipairs(char:GetDescendants()) do
-        if part:IsA('BasePart') and not part.Parent:IsA('Accessory') then
-            local include = false
-            for _, mp in ipairs(parts) do
-                if (part.Position - mp.Position).Magnitude <= ESP.Settings.Character.MaxPartDistance then
-                    include = true
-                    break
-                end
-            end
-            if not include then
-                continue
-            end
-
+ 
+    for _, part in ipairs(parts) do
+        if part and part.Parent then
             local size = part.Size / 2
             local cf = part.CFrame
             local corners = {
@@ -215,10 +204,17 @@ local function Get3DBounds(char)
                 cf * Vector3.new(-size.X, -size.Y, -size.Z),
             }
             for _, c in ipairs(corners) do
-                min = Vector3.new(math.min(min.X, c.X), math.min(min.Y, c.Y), math.min(min.Z, c.Z))
-                max = Vector3.new(math.max(max.X, c.X), math.max(max.Y, c.Y), math.max(max.Z, c.Z))
+                if c.X < min.X then min = Vector3.new(c.X, min.Y, min.Z) end
+                if c.Y < min.Y then min = Vector3.new(min.X, c.Y, min.Z) end
+                if c.Z < min.Z then min = Vector3.new(min.X, min.Y, c.Z) end
+                if c.X > max.X then max = Vector3.new(c.X, max.Y, max.Z) end
+                if c.Y > max.Y then max = Vector3.new(max.X, c.Y, max.Z) end
+                if c.Z > max.Z then max = Vector3.new(max.X, max.Y, c.Z) end
             end
         end
+    end
+    if min.X == math.huge then
+        return
     end
     return min, max
 end
@@ -745,8 +741,8 @@ local function HandlePlayerRemoving(player)
 end
 
 local function InitializeESP()
-    if game.CoreGui:FindFirstChild('BoxESPScreenGui') then
-        pcall(function() game.CoreGui.BoxESPScreenGui:Destroy() end)
+    if CoreGui:FindFirstChild('BoxESPScreenGui') then
+        pcall(function() CoreGui.BoxESPScreenGui:Destroy() end)
     end
 
     ScreenGui = Instance.new('ScreenGui')
@@ -754,7 +750,7 @@ local function InitializeESP()
     ScreenGui.IgnoreGuiInset = true
     ScreenGui.ResetOnSpawn = false
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    ScreenGui.Parent = game.CoreGui
+    ScreenGui.Parent = CoreGui
 
     CleanupAllESP()
 
@@ -808,6 +804,9 @@ local function InitializeESP()
             return
         end
 
+        local localCharacter = Players.LocalPlayer.Character
+        local localHrp = localCharacter and localCharacter:FindFirstChild("HumanoidRootPart")
+
         for player, guis in pairs(ESP.GUIs) do
             if not ShouldShowESP(player) then
                 guis.boxFrame.Visible = false
@@ -856,7 +855,22 @@ local function InitializeESP()
             end
 
             local screenPos = Camera:WorldToViewportPoint(hrp.Position)
-            if screenPos.Z <= 0 then
+            if screenPos.Z <= 0.5 then
+                guis.boxFrame.Visible = false
+                guis.outlineFrame.Visible = false
+                guis.fillFrame.Visible = false
+                guis.healthbarOutline.Visible = false
+                for _, tag in ipairs(guis.healthChangeTags) do
+                    tag.Visible = false
+                end
+                guis.nameTag.Visible = false
+                guis.distanceTag.Visible = false
+                guis.velocityTag.Visible = false
+                guis.highlight.Enabled = false
+                continue
+            end
+
+            if screenPos.X < -50 or screenPos.X > Camera.ViewportSize.X + 50 or screenPos.Y < -50 or screenPos.Y > Camera.ViewportSize.Y + 50 then
                 guis.boxFrame.Visible = false
                 guis.outlineFrame.Visible = false
                 guis.fillFrame.Visible = false
@@ -914,7 +928,7 @@ local function InitializeESP()
                 guis.nameTag.Size = UDim2.fromOffset(60, 14)
 
                 guis.distanceTag.Visible = ESP.Settings.Distance.Enabled
-                local distance = math.floor((Players.LocalPlayer.Character.HumanoidRootPart.Position - hrp.Position).Magnitude)
+                local distance = localHrp and math.floor((localHrp.Position - hrp.Position).Magnitude) or 0
                 guis.distanceTag.Text = '[' .. distance .. 'm]'
                 guis.distanceTag.Position = UDim2.fromOffset((bl.X + br.X) / 2 - 30, bl.Y + ESP.Settings.Distance.Offset.Y)
                 guis.distanceTag.Size = UDim2.fromOffset(60, 14)
