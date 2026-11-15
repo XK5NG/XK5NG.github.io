@@ -420,7 +420,7 @@ function Handler:Animate(Props)
             return nil
         end
 
-        local Character = self.OWNER.Character
+        local Character = LocalPlayer.Character
         if not Character then
             return nil
         end
@@ -489,10 +489,6 @@ function Handler:Animate(Props)
         end
 
         Animation:Destroy()
-
-        self._animationTracks = self._animationTracks or {}
-        self._animationTracks[AnimationId] = Track
-
         return Track
     end, "Animate")
 end
