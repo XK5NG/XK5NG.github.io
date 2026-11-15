@@ -391,6 +391,112 @@ function Handler:Stop(Character: Model)
     end
 end
 
+
+local SafeCall = function(Callback, Name)
+    local Success, Result = pcall(Callback)
+
+    if not Success then
+        warn("[" .. (Name or "Handler") .. "] " .. tostring(Result))
+        return nil
+    end
+
+    return Result
+end
+
+function Handler:Animate(Props)
+    return SafeCall(function()
+        Props = typeof(Props) == "table" and Props or {}
+
+        local Id = Props.Id
+        local Speed = tonumber(Props.Speed) or 1
+        local Priority = Props.Priority or 4
+        local PlaySpeed = tonumber(Props.PlaySpeed)
+        local TimePosition = tonumber(Props.TimePosition)
+        local StopCurrent = Props.StopCurrent or false
+        local StopPrevious = Props.StopPrevious or false
+        local ReturnCurrent = Props.ReturnCurrent or false
+
+        if not Id then
+            return nil
+        end
+
+        local Character = self.OWNER.Character
+        if not Character then
+            return nil
+        end
+
+        local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+        if not Humanoid or not Humanoid.Parent then
+            return nil
+        end
+
+        local AnimationId = resolveAnimationId(Id)
+        if not AnimationId then
+            return nil
+        end
+
+        local Existing = nil
+        local Matches = {}
+
+        for _, Track in pairs(Humanoid:GetPlayingAnimationTracks()) do
+            if Track.Animation and Track.Animation.AnimationId == AnimationId then
+                Existing = Track
+                table.insert(Matches, Track)
+            end
+        end
+
+        if Existing then
+            if StopPrevious then
+                for _, Track in pairs(Matches) do
+                    Track:Stop()
+                end
+
+                return true
+            end
+
+            if StopCurrent then
+                Existing:Stop(PlaySpeed or 0.1)
+                return true
+            end
+
+            if ReturnCurrent then
+                return Existing
+            end
+
+            for _, Track in pairs(Matches) do
+                Track:Stop()
+            end
+        elseif StopCurrent then
+            return true
+        end
+
+        local Animation = Instance.new("Animation")
+        Animation.AnimationId = AnimationId
+
+        local Track = Humanoid:LoadAnimation(Animation)
+
+        if type(Priority) == "number" then
+            Track.Priority = Priority
+        elseif Enum.AnimationPriority[Priority] then
+            Track.Priority = Enum.AnimationPriority[Priority]
+        end
+
+        Track:Play(PlaySpeed)
+        Track:AdjustSpeed(Speed)
+
+        if TimePosition then
+            Track.TimePosition = TimePosition
+        end
+
+        Animation:Destroy()
+
+        self._animationTracks = self._animationTracks or {}
+        self._animationTracks[AnimationId] = Track
+
+        return Track
+    end, "Animate")
+end
+
 function Handler:AnimPlay(ID: string, Speed: number?, Time: number?, Smoothing: number?)
 	if not Handler:Humanoid(LocalPlayer) or not Handler:Humanoid(LocalPlayer).Parent then
 		return
