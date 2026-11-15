@@ -329,9 +329,37 @@ function Handler:RemoveAccessory(Character: Model, Accessory: Accessory)
 end
 
 function Handler:Equip(Tool: string)
-    if LocalPlayer.Backpack:FindFirstChild(Tool) and not LocalPlayer.Character:FindFirstChild(Tool) then
-        LocalPlayer.Backpack:FindFirstChild(Tool).Parent = LocalPlayer.Character
+    if type(Tool) ~= "string" or Tool == "" then
+        return false
     end
+
+    local Character = LocalPlayer.Character
+    local Backpack = LocalPlayer:FindFirstChildOfClass("Backpack")
+
+    if not Character or not Backpack then
+        return false
+    end
+
+    if Character:FindFirstChild(Tool) then
+        return true
+    end
+
+    local Tool_Instance = Backpack:FindFirstChild(Tool)
+
+    if not Tool_Instance or not Tool_Instance:IsA("Tool") then
+        return false
+    end
+
+    local Success, Error = pcall(function()
+        Tool_Instance.Parent = Character
+    end)
+
+    if not Success then
+        warn("[Handler:Equip] Failed to equip:", Error)
+        return false
+    end
+
+    return Tool_Instance.Parent == Character
 end
 
 function Handler:PlaySound(ID: number, Vol: number)
