@@ -132,6 +132,24 @@ function Handler:Cache_Tool()
     end
 end
 
+function Handler:FFlag(Name: string, Value: boolean | number | string)
+    if type(Name) ~= "string" or Name == "" then
+        return false
+    end
+
+    if type(Value) ~= "boolean" and type(Value) ~= "number" and type(Value) ~= "string" then
+        return false
+    end
+
+    if type(setfflag) ~= "function" then
+        return false
+    end
+
+    local Success, Result = pcall(setfflag, Name, tostring(Value):lower())
+
+    return Success, Result
+end
+
 function Handler:ChangeState(Number: number)
     Handler:Humanoid(LocalPlayer):ChangeState(Number)
 end
